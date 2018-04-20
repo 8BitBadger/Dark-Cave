@@ -32,12 +32,12 @@ public class Projectile : MonoBehaviour
         projectileStats.Target = target;
         projectileStats.Rb2d = GetComponent<Rigidbody2D>();
 
-        foreach (projectileAction action in tempImmediateAction)
+        foreach (ProjectileAction action in tempImmediateAction)
         {
             immediateAction.Add(Instantiate(action));
         }
 
-        foreach (projectileAction action in tempdelayedAction)
+        foreach (ProjectileAction action in tempdelayedAction)
         {
             delayedAction.Add(Instantiate(action));
         }
@@ -46,7 +46,7 @@ public class Projectile : MonoBehaviour
         spawnTime = Time.time;
         
 
-        staticDir = new Vector2(target.position.x, target.position.y) - rb2d.position;
+        staticDir = new Vector2(target.position.x, target.position.y) - projectileStats.rb2d.position;
         staticDir.Normalize();
     }
 
@@ -83,15 +83,15 @@ public class Projectile : MonoBehaviour
 
     private void Update()
     {
-        foreach (projectileAction action in immediateAction)
+        foreach (ProjectileAction action in immediateAction)
         {
-            action.DoAction(stats);
+            action.DoAction(projectileStats);
         }
 
-        foreach (projectileAction action in delayedAction)
+        foreach (ProjectileAction action in delayedAction)
         {
             //TODO: integrate the delayedEffectTimerTrigger from the projectile stats to check the time againts the trigger every update
-            action.DoAction(stats);
+            action.DoAction(projectileStats);
         }
     }
 }

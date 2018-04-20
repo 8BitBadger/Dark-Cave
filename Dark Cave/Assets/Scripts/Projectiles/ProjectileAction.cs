@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class ProjectileAction : ScriptableObject
 {
-    public abstract DoAction(ProjectileStats stats);
+    public abstract void DoAction(ProjectileStats stats);
 }
