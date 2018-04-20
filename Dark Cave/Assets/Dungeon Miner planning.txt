@@ -1,0 +1,35 @@
+Dungeon Miner planning - My homage to dungeon keeper
+
+It should be a dungeon keeper rougelike.
+
+You need to be the bad guy!
+
+Leveling system for the player (You change in looks as you level up).
+Dicovering the map and secrets (Must have fog of war)
+Rooms to build (Bed room to rest in and save at, Library too keep spells and relics, treasure room to keep gold in, mole farm for meat (Molary - hatchery lol))
+Fight monsters and heroes.
+
+1. Look into fog of war --- Done
+2. Look into room identification in the map.cs --- Done
+3. Learn how to detect and assign rooms. --- Done
+4. Fix and refine AI so that they can also fight for the player --- Busy
+5. Create a leveling system for the player and changing sprite
+
+
+--- TO DO ---
+
+Enemy AI and friendly AI --- Busy --- RCombine the seperate fow class for the enemies into the state based class for the enemieswm
+-------
+
+--- 02/07/2017 ---
+Implimented fog of war, created bug with enemies (see bug report)
+--- 06/07/2017 ---
+Made map generator create a stone wall barrier so player cannot get out of map
+Made the stone wall being generated at the moment be ground tiles and other tiles.
+--- 12/07/2017 ---
+Updated fog of war not to be albe to see through to the other side of the wall, using linecast but it could be optimised, see notes at code in player.cs
+--- 14/07/2017 ---
+Rooms can now be made, still needs refining though.
+Rooms can now bedetected by the region class
+--- 28/08/2017 ---
+Fixed bug where enemy AI path finding stopped working.

@@ -1,0 +1,11 @@
+Bugs:
+
+Rotation of the enemies are of by 180 degrees why?
+The new patrol point of the enemie class is still bieng set inside walls need to fix.
+
+Solved:
+
+Player is not displaying above ground tiles --- Solved (The player prefab sorting layer is set to character and in the world controler the tilke object sorting layer is set to ground)
+The floor tiles do not show up when map is create --- Solved (The tile type was set to floor in the init of the map array it then doesnt change thus not calling the tile type changed and not setting the sprite to the floor sprite).
+Due to the box colliders not being disabled any more and set to triggers the enemies targeting has been broken, need to update the path finding on them --- Solved (The layer mas for the tiles now change when the tile type is changed
+so that the floor tiles now show "Defualt" and won't stop the field of view from working for the enemies)

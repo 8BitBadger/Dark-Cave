@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96e17b0609e915142b86a318db2631fe, type: 3}
+  m_Name: WanderState
+  m_EditorClassIdentifier: 
+  actions:
+  - {fileID: 11400000, guid: 2368db30a2874f74e9a3f316dbafd697, type: 2}
+  transitions:
+  - decision: {fileID: 11400000, guid: d4f8e6a976845fd4c9ba6a30dd74e497, type: 2}
+    trueState: {fileID: 11400000, guid: 1a1c789dd6ef20f49ada2c52977bb114, type: 2}
+    falseState: {fileID: 11400000, guid: 8da600c27391d3a4c8e196588274d964, type: 2}
+  sceneGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
