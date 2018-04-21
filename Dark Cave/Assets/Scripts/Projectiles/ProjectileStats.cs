@@ -14,21 +14,26 @@ public class ProjectileStats : ScriptableObject
     public float speed;
     public float rotateSpeed;
     public float projectileLife; //How long the projectile will persist in the world
-    public float spawnTime = 0; //The time the projectile was spawned.
-
+    private float spawnTime; //The time the projectile was spawned.
     public float delayedEffectTimerTrigger; //The follow target bool will become active after this amount of seconds
+
+    public float SpawnTime
+    {
+        set { spawnTime = value; }
+        get { return spawnTime; }
+    }
 
     private Rigidbody2D rb2d;
     public Rigidbody2D Rb2d
     {
         set { rb2d = value; }
+        get {return rb2d;}
     }
     
     private Transform target;
     public Transform Target
     {
         set { target = value; }
+        get { return target;}
     }
-
-    //TODO: mayebe the rigidbody2d refference should also be stored here if it is going to be used by the projectile Actions
 }
