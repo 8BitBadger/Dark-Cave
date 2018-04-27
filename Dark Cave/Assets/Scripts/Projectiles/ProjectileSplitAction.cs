@@ -1,8 +1,8 @@
-//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-<<<<<<< HEAD
+
 //[CreateAssetMenu(menuName = "Projectile/Actions/Split")]
 //public class SplitAction : ProjectileAction
 //{
@@ -13,7 +13,7 @@
 //        // {
 //        //     controller.rb2d.angularVelocity = 0;
 //        // }
-        
+
 //        Vector2 dir = new Vector2(stats.chaseTarget.position.x, stats.chaseTarget.position.y) - stats.rb2d.position;
 //        dir.Normalize();
 //        float rotateAmount = Vector3.Cross(dir, stats.transform.up).z;
@@ -24,18 +24,18 @@
 
 //    private void Split(ProjectileStats stats)
 //    {
-//        if((Time.time - controller.timeSinceLastAttack) > controller.stats.attackInterval )
+//        if ((Time.time - controller.timeSinceLastAttack) > controller.stats.attackInterval)
 //        {
 //            controller.chaseTarget.gameObject.GetComponent<Player>().TakeDamage(controller.stats.baseDamage);
 //            controller.timeSinceLastAttack = Time.time;
 //        }
 //    }
 //}
-=======
+
 [CreateAssetMenu(menuName = "Projectile/Actions/Split")]
 public class SplitAction : ProjectileAction
 {
-    public List<GameObjects> childProjectiles;
+    public List<GameObject> childProjectiles;
     public int amountOfCopies;
 
     public override void DoAction(ProjectileStats stats)
@@ -48,4 +48,3 @@ public class SplitAction : ProjectileAction
         //TODO: Instantiate the amount of copies of the child object that is needed
     }
 }
->>>>>>> e846acb5a957ac14fe02730357466617530e5816

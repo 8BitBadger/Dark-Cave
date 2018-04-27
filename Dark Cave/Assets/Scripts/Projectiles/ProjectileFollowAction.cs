@@ -14,9 +14,9 @@ public class FollowTargetAction : ProjectileAction
     {     
         Vector2 dir = new Vector2(stats.Target.position.x, stats.Target.position.y) - stats.Rb2d.position;
         dir.Normalize();
-        float rotateAmount = Vector3.Cross(dir, stats.transform.up).z;
+        float rotateAmount = Vector3.Cross(dir, stats.Rb2d.transform.up).z;
 
-        rb2d.angularVelocity = rotateAmount * (stats.rotateSpeed * Time.deltaTime);
-        rb2d.velocity = dir * (stats.speed * Time.deltaTime);
+        stats.Rb2d.angularVelocity = rotateAmount * (stats.rotateSpeed * Time.deltaTime);
+        stats.Rb2d.velocity = dir * (stats.speed * Time.deltaTime);
     }
 }

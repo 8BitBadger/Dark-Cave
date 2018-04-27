@@ -35,7 +35,7 @@ public class Projectile : MonoBehaviour
 
     private void Update()
     {
-        foreach (ProjectileAction action in delayedAction)
+        foreach (ProjectileAction action in action)
         {
             if ((Time.time - projectileStats.SpawnTime) >= action.delayedEffectTimerTrigger)
             {

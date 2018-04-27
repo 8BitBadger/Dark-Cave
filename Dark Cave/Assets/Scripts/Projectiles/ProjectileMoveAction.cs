@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Projectile/Actions/Move")]
-public class FollowTargetAction : ProjectileAction
+public class FollowMoveAction : ProjectileAction
 {
     private Vector2 staticDir;
     private bool initDone = false;
@@ -22,11 +22,11 @@ public class FollowTargetAction : ProjectileAction
             initDone = true;
         }
 
-        FollowTarget(stats);
+        Move(stats);
     }
 
-    private void FollowTarget(ProjectileStats stats)
+    private void Move(ProjectileStats stats)
     {      
-        rb2d.velocity = staticDir * stats.speed * Time.deltaTime;
+        stats.Rb2d.velocity = staticDir * stats.speed * Time.deltaTime;
     }
 }
