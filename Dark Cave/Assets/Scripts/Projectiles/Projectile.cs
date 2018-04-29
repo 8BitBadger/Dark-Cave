@@ -4,46 +4,48 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public ProjectileStats tempStats;
-    private ProjectileStats projectileStats;
-    
-    public List<ProjectileAction> tempAction;
-    private List<ProjectileAction> action;
+    public List<ProjectileAction> action;
+
+    private Rigidbody2D rb2d;
+    public Rigidbody2D Rb2d
+    {
+        get { return rb2d;}
+        set { rb2d = value; }
+    }
 
     private Transform target;
 
-    //private Vector2 staticDir;
-
     public Transform Target
     {
+        get { return target; }
         set { target = value; }
     }
 
+
+    private float spawnTime; //The time the projectile was spawned.
+    public int projectileLife;
+
+    //TODO: Later animation needs to be added and a few more things
+    //public Animation projectileAnimation;
+    //public GameObject hitAnimation;
+
     void Start()
     {
-        projectileStats = Instantiate(tempStats);
-
-        projectileStats.Target = target;
-        projectileStats.Rb2d = GetComponent<Rigidbody2D>();
-        projectileStats.SpawnTime = Time.time;
-
-        foreach (ProjectileAction act in tempAction)
-        {
-            action.Add(Instantiate(act));
-        } 
+        Rb2d = GetComponent<Rigidbody2D>();
+        spawnTime = Time.time;
     }
 
     private void Update()
     {
-        foreach (ProjectileAction action in action)
+        foreach (ProjectileAction tmpAction in action)
         {
-            if ((Time.time - projectileStats.SpawnTime) >= action.delayedEffectTimerTrigger)
+            if ((Time.time - spawnTime) >= tmpAction.delayedEffectTimerTrigger)
             {
-               action.DoAction(projectileStats); 
+                tmpAction.DoAction(this); 
             }
         }
 
-        if ((Time.time - projectileStats.SpawnTime) >= projectileStats.projectileLife)
+        if ((Time.time - spawnTime) >= projectileLife)
         {
             Destroy(gameObject);
         }

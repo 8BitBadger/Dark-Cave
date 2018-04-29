@@ -8,7 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ab619cd601623140bc52063c0b4bf49, type: 3}
-  m_Name: LongRangeAttackAction
+  m_Script: {fileID: 11500000, guid: 633ddf5f1ecb4644ab736fc1f90e3aba, type: 3}
+  m_Name: ProjectileFollowAction
   m_EditorClassIdentifier: 
-  projectile: {fileID: 1589085360966730, guid: 325774a1f69d4174d859c6b71212bdbb, type: 2}
+  delayedEffectTimerTrigger: 0
+  moveSpeed: 100
+  rotateSpeed: 200

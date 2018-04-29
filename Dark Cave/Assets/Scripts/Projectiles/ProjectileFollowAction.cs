@@ -3,20 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Projectile/Actions/FollowTarget")]
-public class FollowTargetAction : ProjectileAction
+public class ProjectileFollowAction : ProjectileAction
 {
-    public override void DoAction(ProjectileStats stats)
+    public int moveSpeed;
+    public int rotateSpeed;
+
+    public override void DoAction(Projectile projectile)
     {
-        FollowTarget(stats);
+        FollowTarget(projectile);
     }
 
-    private void FollowTarget(ProjectileStats stats)
+    private void FollowTarget(Projectile projectile)
     {     
-        Vector2 dir = new Vector2(stats.Target.position.x, stats.Target.position.y) - stats.Rb2d.position;
+        Vector2 dir = new Vector2(projectile.Target.position.x, projectile.Target.position.y) - projectile.Rb2d.position;
         dir.Normalize();
-        float rotateAmount = Vector3.Cross(dir, stats.Rb2d.transform.up).z;
+        float rotateAmount = Vector3.Cross(dir, projectile.Rb2d.transform.up).z;
 
-        stats.Rb2d.angularVelocity = rotateAmount * (stats.rotateSpeed * Time.deltaTime);
-        stats.Rb2d.velocity = dir * (stats.speed * Time.deltaTime);
+        projectile.Rb2d.angularVelocity = rotateAmount * (rotateSpeed * Time.deltaTime);
+        projectile.Rb2d.velocity = dir * (moveSpeed * Time.deltaTime);
     }
 }

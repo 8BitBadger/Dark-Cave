@@ -8,12 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b31ab589ebd48240abb7974678bdaeb, type: 3}
-  m_Name: Bone
+  m_Script: {fileID: 11500000, guid: 58d005d59c0d3624d8360fcdcd655307, type: 3}
+  m_Name: ProjectileMoveAction
   m_EditorClassIdentifier: 
-  speed: 3
-  rotateSpeed: 2
-  projectileLife: 5
-  hasDelaydEffect: 1
-  delayEffectTimerTrigger: 2
-  followTarget: 0
+  delayedEffectTimerTrigger: 0
+  moveSpeed: 500
