@@ -1,12 +1,18 @@
-Dungeon Miner planning - My homage to dungeon keeper
+Dungeon Miner planning - My homage to dungeon keeper and made in abyss
 
-It should be a dungeon keeper rougelike.
+It should be a dungeon keeper rougelike, some insperation from Made in abyss anime is also in here.
 
-You need to be the bad guy!
+Insperations:
+Explore and find hidden secrets and hidden rooms like in dungeon Keeper when you dig through the map.
+Training room to train yourself like in dungeon keeper Dungeon keeper.
+Powerfull ancient weapons like those in made in abyss.
+Perma death and spells like in rougelikes and rpgs.
+Are you the good guy or the bad guy? ( an answer the player must decide for themselfes).
+very slow level gains and low levels. Max level 20
 
 Leveling system for the player (You change in looks as you level up).
-Dicovering the map and secrets (Must have fog of war)
 Rooms to build (Bed room to rest in and save at, Library too keep spells and relics, treasure room to keep gold in, mole farm for meat (Molary - hatchery lol))
+Fog of war like dungeon keeper (you can only see one tile into the map like I have now), I dont have so many small tiles like terarria to recreate thier fog of war
 Fight monsters and heroes.
 
 1. Look into fog of war --- Done

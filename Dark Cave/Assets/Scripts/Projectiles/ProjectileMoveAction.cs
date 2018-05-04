@@ -6,19 +6,18 @@ using UnityEngine;
 public class ProjectileMoveAction : ProjectileAction
 {
     private Vector2 staticDir;
-    private bool initDone;
+    private bool initDone = false;
     public int moveSpeed;
 
     private void Init(Projectile projectile)
     {
         staticDir = new Vector2(projectile.Target.position.x, projectile.Target.position.y) - projectile.Rb2d.position;
-        staticDir.Normalize();
-        projectile.Rb2d.MoveRotation(Vector3.Cross(staticDir, projectile.Rb2d.transform.up).z);
+        projectile.Rb2d.MoveRotation(Mathf.Atan2(staticDir.y, staticDir.x) * Mathf.Rad2Deg);
     }
 
     public override void DoAction(Projectile projectile)
     {
-        if(!initDone)
+        if(initDone == false)
         {
             Init(projectile);
             initDone = true;
