@@ -23,6 +23,7 @@ public class StateController : MonoBehaviour
     //The rigidbody for the enemy AI
     [HideInInspector] public Rigidbody2D rb2d;                                                      
     [HideInInspector] public Vector2 randomWanderPoint = Vector2.zero;
+    [HideInInspector] public Vector2 lastSeenPoint = Vector2.zero;
 
     private bool aiActive;
 

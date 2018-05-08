@@ -18,7 +18,6 @@ public class LookDecision : Decision
         //Loop through the targets that are in range of the fow
         for (int i = 0; i < targetInViewRaduis.Length; i++)
         {
-
             Transform rayCastTarget = targetInViewRaduis[i].transform;
             Vector2 dirToRaycast = (rayCastTarget.position - controller.transform.position).normalized;
 
@@ -29,6 +28,7 @@ public class LookDecision : Decision
                 if (!Physics2D.Raycast(controller.rb2d.position, dirToRaycast, distanceToTarget, controller.stats.obstacleMask))
                 {
                     controller.chaseTarget = rayCastTarget;
+                    controller.lastSeenPoint = controller.chaseTarget.position;
                     return true;
                 }
             }
