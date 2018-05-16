@@ -119,7 +119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e570aa07e5de4d444abbf52deaf6f0c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorPrefab: {fileID: 0}
+  cursorPrefab: {fileID: 1172850694692548, guid: 06ddb3da9cf11e44b8b579628811cce3,
+    type: 2}
+  playerStats: {fileID: 11400000, guid: 9d70cf05321d25643b8362baec961898, type: 2}
 --- !u!114 &114826930485010804
 MonoBehaviour:
   m_ObjectHideFlags: 1
