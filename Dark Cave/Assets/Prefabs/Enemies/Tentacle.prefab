@@ -155,4 +155,5 @@ MonoBehaviour:
   stateTimeElapsed: 0
   rb2d: {fileID: 0}
   randomWanderPoint: {x: 0, y: 0}
+  lastSeenPoint: {x: 0, y: 0}
   timeSinceLastAttack: 0

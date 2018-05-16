@@ -12,8 +12,6 @@ public class MapManager
     int height;
     //The random string used as a cration seed for the map
     string seed;
-    //The bool determining if we need to use the randomly generated seed
-    bool useRandomSeed;
 
     //The tile map of the raw int map
     Tile[,] tileMap;
@@ -62,7 +60,9 @@ public class MapManager
     {
         if (useRandomSeed)
         {
-            seed = System.DateTime.Today.Second.ToString();
+            //seed = System.DateTime.Today.Second.ToString();
+            seed = System.DateTime.Now.Millisecond.ToString();
+
         }
         else
         {
