@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour
 
         if(stats.health <= 0)
         {
-
+            Die();
         }
     }
 

@@ -14,6 +14,9 @@ public class Player : MonoBehaviour
     //The layers that are used for the FOW scanning
     private int scanLayers;
 
+    private float walkSpeed;
+    private float sprintSpeed;
+
     // Use this for initialization
     void Start()
     {
@@ -35,55 +38,20 @@ public class Player : MonoBehaviour
         }
 
         //animator = gameObject.GetComponent<Animator>();
+
+        walkSpeed = (float)((stats.speed + stats.speedModifier) *  Time.deltaTime * 50 + (stats.agility / 5));
+        sprintSpeed = walkSpeed + (walkSpeed / 2);
     }
 
     // Update is called once per frame
     void Update()
     {
-        //TODO: See if the players field of view function cannot be optimized, reduce look raduis to only 180 degrees? less linecasts
-        //if(!stats.AI)
-        //{
         StartFOWCheck();
-        //}
-    }
 
-    void FixedUpdate()
-    {
-        //MoveActor();
-        Vector2 move = Vector2.zero;
+        float curSpeed = walkSpeed;
+        //float maxSpeed = curSpeed;
 
-        move.x = Input.GetAxis("Horizontal");
-        move.y = Input.GetAxis("Vertical");
-
-        //animator.SetBool("grounded", grounded);
-        //animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
-
-        //stats.maxSpeed *= stats.speedModifier;
-
-        if (rb2d.velocity.x < stats.maxSpeed)
-        {
-            move.x *= stats.accel;
-        }
-        else
-        {
-            move.x = 0;
-        }
-
-        if (rb2d.velocity.y < stats.maxSpeed)
-        {
-            move.y *= stats.accel;
-        }
-        else
-        {
-            move.y = 0;
-        }
-
-        rb2d.AddForce(move, ForceMode2D.Force);
-
-        Vector3 objectPos = Camera.main.WorldToScreenPoint(transform.position);
-        Vector3 dir = Input.mousePosition - objectPos;
-        //Rotate the rigidbody2d smoothly 
-        rb2d.MoveRotation(Mathf.LerpAngle(rb2d.rotation, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg, .1f));
+        rb2d.velocity = new Vector2(Mathf.Lerp(0, Input.GetAxis("Horizontal") * curSpeed, 0.8f), Mathf.Lerp(0, Input.GetAxis("Vertical") * curSpeed, 0.8f));
     }
 
     public void StartFOWCheck()
@@ -95,8 +63,6 @@ public class Player : MonoBehaviour
     {
         if (rb2d.position != previousPosition)
         {
-
-
             //The sprite renderer for the sprite
             SpriteRenderer tempSprite;
 
@@ -134,7 +100,7 @@ public class Player : MonoBehaviour
                 Debug.DrawLine(transform.position, dir, Color.red);
 
                 hit = Physics2D.LinecastAll(transform.position, dir, scanLayers);
-             
+
                 for (int j = 0; j < hit.Length - 1; j++)
                 {
                     int hitXPos = (int)hit[j].transform.position.x;
@@ -150,7 +116,7 @@ public class Player : MonoBehaviour
                         }
                         break;
                     }
-                    else 
+                    else
                     {
                         tempSprite = hit[j].transform.GetComponent<SpriteRenderer>();
 

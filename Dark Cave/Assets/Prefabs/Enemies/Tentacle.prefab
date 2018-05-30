@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 114664212233123276}
   m_Layer: 0
   m_Name: Tentacle
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,8 +45,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 3
-  m_AngularDrag: 0.05
+  m_LinearDrag: 0
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -91,6 +91,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -157,6 +158,8 @@ MonoBehaviour:
   rb2d: {fileID: 0}
   randomWanderPoint: {x: 0, y: 0}
   lastSeenPoint: {x: 0, y: 0}
+  walkSpeed: 0
+  sprintSpeed: 0
   timeSinceLastAttack: 0
 --- !u!114 &114664212233123276
 MonoBehaviour:

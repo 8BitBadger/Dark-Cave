@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "PluggableAI/Actions/Run")]
 public class RunAction : Action
 {
+    Vector2 normalizedDir;
+
     public override void Act(StateController controller)
     {
         Run(controller);
@@ -12,34 +14,8 @@ public class RunAction : Action
 
     private void Run(StateController controller)
     {
-        float endAccel;
+        normalizedDir = (new Vector2(controller.chaseTarget.position.x, controller.chaseTarget.position.y) - controller.rb2d.position).normalized;
 
-        controller.stats.maxSpeed *= controller.stats.speedModifier;
-
-        if (controller.rb2d.velocity.x < controller.stats.maxSpeed)
-        {
-            endAccel = controller.stats.accel;
-        }
-        else
-        {
-            endAccel = 0;
-        }
-
-        if (controller.rb2d.velocity.y < controller.stats.maxSpeed)
-        {
-            endAccel = controller.stats.accel;
-        }
-        else
-        {
-            endAccel = 0;
-        }
-
-        Vector3 moveDir = (controller.transform.position - controller.chaseTarget.position).normalized;
-
-        controller.rb2d.MovePosition(controller.transform.position + moveDir * (endAccel * Time.fixedDeltaTime));
-
-        Vector3 dir = controller.chaseTarget.position - controller.transform.position;
-        //Rotate the rigidbody2d smoothly 
-        controller.rb2d.MoveRotation(Mathf.LerpAngle(controller.rb2d.rotation, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg, .1f));
+        controller.rb2d.velocity = new Vector2(Mathf.Lerp(0, normalizedDir.x * controller.walkSpeed, 0.8f), Mathf.Lerp(0, normalizedDir.y * controller.walkSpeed, 0.8f));
     }
 }

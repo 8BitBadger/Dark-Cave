@@ -21,19 +21,21 @@ public class ActorStats : ScriptableObject
 
     public ActorType type;
 
+    public int strength;
+    public int agility;
+    public int stamina;
+    public int intelligence;
+
     //he health of the actor
     public int health;
     //The endurance of the Actor used for attacking, blocking and mining
     public int endurance;
-    //Maximum speed of the actore
-    public float maxSpeed;
+    //The walk speed of the actor
+    public float speed;
+
     //The maximum speed moddifier for the actor 
     [HideInInspector] public float speedModifier;
 
-    public float rotateSpeed;
-
-    //The acceleration of the actor
-    public float accel;
     //The wander distance of the AI
     public float wanderDistance;
 

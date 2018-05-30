@@ -15,6 +15,7 @@ public class InputManager : MonoBehaviour
 
     bool buildModeIsObjects = false;
     TileType buildModeTile = TileType.Floor;
+    RoomType buildModeRoom = RoomType.None;
 
     float timeSinceLastAttack = 0f;
 
@@ -22,7 +23,7 @@ public class InputManager : MonoBehaviour
     {
         playerInstance = GameObject.FindGameObjectWithTag("Player").GetComponent("Player") as Player;
         cursorPrefab = Instantiate(cursorPrefab);
-        Cursor.visible = false;
+        //Cursor.visible = false;
     }
 
     private void Update()
@@ -38,8 +39,6 @@ public class InputManager : MonoBehaviour
         //lastFramePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         //lastFramePosition.z = 0;
 
-
-
         if (Input.GetMouseButton(0))
         {
             if ((Time.time - timeSinceLastAttack) > playerStats.attackInterval)
@@ -47,38 +46,33 @@ public class InputManager : MonoBehaviour
                 RaycastHit2D[] hit = Physics2D.LinecastAll(GetMousePosition2D(), GetMousePosition2D());
 
                 Tile tile = WorldManager.Instance.GetTileAtWorldCoord(GetMousePosForTile());
-                if (Vector2.Distance(new Vector2(tile.X, tile.Y), playerInstance.transform.position) < 1)
+                if (Vector2.Distance(new Vector2(tile.X, tile.Y), playerInstance.transform.position) < playerStats.attackRange)
                 {
                     if (tile != null && tile.Type != TileType.Rock && tile.Room == RoomType.None)
                     {
                         tile.Type = buildModeTile;
                     }
-                }
 
-                for (int i = 0; i < hit.Length; i++)
-                {
-                    if (hit[i].collider.tag == "")
+                    for (int i = 0; i < hit.Length; i++)
                     {
-
+                        if (hit[i].collider.tag == "Enemy")
+                        {
+                            hit[i].collider.GetComponent<Enemy>().TakeDamage(2);
+                        }
                     }
                 }
-
                 timeSinceLastAttack = Time.time;
             }
-
-
         }
     }
 
     Vector3 GetMousePosition()
     {
-
         return Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 
     Vector2 GetMousePosition2D()
     {
-
         return new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
     }
 
@@ -95,6 +89,13 @@ public class InputManager : MonoBehaviour
     {
         buildModeIsObjects = false;
         buildModeTile = TileType.Floor;
+    }
+
+    public void SetMode_BuildTreasureRoom()
+    {
+        buildModeIsObjects = false;
+        buildModeTile = TileType.Room;
+        buildModeRoom = RoomType.Tresuary;
     }
 
     void UpdateCameraMovement()

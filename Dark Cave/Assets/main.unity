@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 8
+  serializedVersion: 9
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -39,6 +39,7 @@ RenderSettings:
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
   m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -54,11 +55,10 @@ LightmapSettings:
     m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
-    serializedVersion: 9
+    serializedVersion: 10
     m_Resolution: 2
     m_BakeResolution: 40
-    m_TextureWidth: 1024
-    m_TextureHeight: 1024
+    m_AtlasSize: 1024
     m_AO: 0
     m_AOMaxDistance: 1
     m_CompAOExponent: 0
@@ -90,7 +90,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -125,6 +125,8 @@ GameObject:
   - component: {fileID: 22604490}
   - component: {fileID: 22604489}
   - component: {fileID: 22604488}
+  - component: {fileID: 22604496}
+  - component: {fileID: 22604495}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -202,6 +204,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &22604495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 22604487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f08a6f40d2ec4de981f811bfc829f87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TexturePixelsPerWorldUnit: 32
+--- !u!114 &22604496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 22604487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b2951a5739f6b9429a6cd436d8b414e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &158694880
 Prefab:
   m_ObjectHideFlags: 0
@@ -245,6 +270,10 @@ Prefab:
       propertyPath: m_Name
       value: VoidWanderer
       objectReference: {fileID: 0}
+    - target: {fileID: 5004050, guid: 976914285f5a5e341b8462812ecb8c43, type: 2}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 976914285f5a5e341b8462812ecb8c43, type: 2}
   m_IsPrefabParent: 0
@@ -287,7 +316,8 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114405395670381654, guid: 39e8b95260ad53747a15e4945118fc9c, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 39e8b95260ad53747a15e4945118fc9c, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1608128123
@@ -299,11 +329,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4684790728829378, guid: d253b2dcda5a4704fa49308eff711e4a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 37.45
+      value: 38
       objectReference: {fileID: 0}
     - target: {fileID: 4684790728829378, guid: d253b2dcda5a4704fa49308eff711e4a, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 20.95
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 4684790728829378, guid: d253b2dcda5a4704fa49308eff711e4a, type: 2}
       propertyPath: m_LocalPosition.z

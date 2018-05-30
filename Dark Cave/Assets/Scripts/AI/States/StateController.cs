@@ -25,6 +25,9 @@ public class StateController : MonoBehaviour
     [HideInInspector] public Vector2 randomWanderPoint = Vector2.zero;
     [HideInInspector] public Vector2 lastSeenPoint = Vector2.zero;
 
+    public float walkSpeed;
+    public float sprintSpeed;
+
     private bool aiActive;
 
     //Stores the time of hte last attack. Used for 
@@ -39,6 +42,9 @@ public class StateController : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
 
         stats.speedModifier = 1f;
+
+        walkSpeed = (float)((stats.speed + stats.speedModifier) * Time.deltaTime * 20 + (stats.agility / 5));
+        sprintSpeed = walkSpeed + (walkSpeed / 2);
     }
 
     //TODO: Probable going to use this DO NOT delete

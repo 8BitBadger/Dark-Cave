@@ -13,13 +13,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AI: 0
   type: 0
+  strength: 2
+  agility: 2
+  stamina: 2
+  intelligence: 2
   health: 10
   endurance: 5
-  maxSpeed: 3
+  speed: 3
   speedModifier: 1
-  rotateSpeed: 3
-  accel: 20
-  wanderDistance: 0
+  wanderDistance: 5
   attackRange: 2
   attackInterval: 2
   baseDamage: 1

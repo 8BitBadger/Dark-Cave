@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 9a9566715badd38488f9757f97c408b8
-timeCreated: 1526465468
+guid: 7084ea10e403a0e4faa8a2a730a43caf
+timeCreated: 1527231667
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: FxSheet_0
-    21300002: FxSheet_1
+    21300002: Mouse
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -1
     wrapU: 1
@@ -116,13 +116,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: FxSheet_1
+      name: Mouse
       rect:
         serializedVersion: 2
         x: 0
-        y: 208
-        width: 32
-        height: 32
+        y: 224
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
