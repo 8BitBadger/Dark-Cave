@@ -25,8 +25,8 @@ public class StateController : MonoBehaviour
     [HideInInspector] public Vector2 randomWanderPoint = Vector2.zero;
     [HideInInspector] public Vector2 lastSeenPoint = Vector2.zero;
 
-    public float walkSpeed;
-    public float sprintSpeed;
+    [HideInInspector] public float walkSpeed;
+    [HideInInspector] public float sprintSpeed;
 
     private bool aiActive;
 

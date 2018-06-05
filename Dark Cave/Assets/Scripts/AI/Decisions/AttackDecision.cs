@@ -14,6 +14,7 @@ public class AttackDecision : Decision
     {
         if (Vector2.Distance(controller.chaseTarget.position, controller.rb2d.position) <= controller.stats.attackRange)
         {
+            controller.rb2d.velocity = Vector2.zero;
             return true;
         }
 

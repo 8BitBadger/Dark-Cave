@@ -9,11 +9,7 @@ public class LongRangeAttackAction : Action
 
     public override void Act(StateController controller)
     {
-        //TODO: find a better way to remove or reduce angular drag, angular drag due to the player bumping into the ai
-        if (controller.rb2d.angularVelocity > 0)
-        {
-            controller.rb2d.angularVelocity = 0;
-        }
+
         Attack(controller);
     }
 

@@ -8,7 +8,6 @@ public class State : ScriptableObject
 
     public Action[] actions;
     public Transition[] transitions;
-    public Color sceneGizmoColor = Color.grey;
 
     public void UpdateState(StateController controller)
     {
