@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Name: ProjectileMoveAction
   m_EditorClassIdentifier: 
   delayedEffectTimerTrigger: 0
-  moveSpeed: 500
+  moveSpeed: 5

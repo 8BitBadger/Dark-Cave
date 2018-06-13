@@ -29,6 +29,7 @@ public class LookDecision : Decision
                 {
                     controller.chaseTarget = rayCastTarget;
                     controller.lastSeenPoint = controller.chaseTarget.position;
+
                     return true;
                 }
             }

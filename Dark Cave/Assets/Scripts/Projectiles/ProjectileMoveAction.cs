@@ -26,7 +26,8 @@ public class ProjectileMoveAction : ProjectileAction
     }
 
     private void Move(Projectile projectile)
-    {      
-        projectile.Rb2d.velocity = staticDir * moveSpeed * Time.deltaTime;
+    {
+
+        projectile.Rb2d.velocity = new Vector2 (staticDir.x + moveSpeed * Time.deltaTime, staticDir.y + moveSpeed * Time.deltaTime);
     }
 }

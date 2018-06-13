@@ -14,8 +14,7 @@ public class Player : MonoBehaviour
     //The layers that are used for the FOW scanning
     private int scanLayers;
 
-    private float walkSpeed;
-    private float sprintSpeed;
+    private float speed;
 
     // Use this for initialization
     void Start()
@@ -25,33 +24,28 @@ public class Player : MonoBehaviour
 
         scanLayers = floorLayer | obstacleLayer;
 
-        stats.speedModifier = 1f;
+        stats.agility = stats.agility + stats.agilityModifier;
 
         if (gameObject.GetComponent<Rigidbody2D>())
         {
             rb2d = gameObject.GetComponent<Rigidbody2D>();
         }
-        else
-        {
-            //Set up the rigibody2d component for the actor
-            //SetUpRigidBody();
-        }
 
         //animator = gameObject.GetComponent<Animator>();
 
-        walkSpeed = (float)((stats.speed + stats.speedModifier) *  Time.deltaTime * 50 + (stats.agility / 5));
-        sprintSpeed = walkSpeed + (walkSpeed / 2);
+        stats.speed = stats.sprintSpeed;
+        stats.strengthModifier = 3;
     }
 
     // Update is called once per frame
-    void Update()
+    void Update()       
     {
         StartFOWCheck();
 
-        float curSpeed = walkSpeed;
-        //float maxSpeed = curSpeed;
+        //TODO: This speed calculation needs to run every frame due to the time.deltatime needing to be calculated every frame for an acurate movement
+        speed = (float)(stats.speed + (3 + (stats.agility / 5)) * Time.deltaTime);
 
-        rb2d.velocity = new Vector2(Mathf.Lerp(0, Input.GetAxis("Horizontal") * curSpeed, 0.8f), Mathf.Lerp(0, Input.GetAxis("Vertical") * curSpeed, 0.8f));
+        rb2d.velocity = new Vector2(Mathf.Lerp(0, Input.GetAxis("Horizontal") * speed, 0.8f), Mathf.Lerp(0, Input.GetAxis("Vertical") * speed, 0.8f));
     }
 
     public void StartFOWCheck()
@@ -136,5 +130,10 @@ public class Player : MonoBehaviour
     {
         stats.health -= damage;
         Debug.Log("Health = " + stats.health);
+    }
+
+    public int CalculateDamage()
+    {
+        return (((stats.strength + stats.strengthModifier) / 5));
     }
 }

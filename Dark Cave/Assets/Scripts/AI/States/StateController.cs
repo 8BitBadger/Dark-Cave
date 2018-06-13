@@ -1,15 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
-//using Complete;
 
 public class StateController : MonoBehaviour
 {
     public State currentState;
     public State remainState;
 
-    //Stats for the enemies, its a scriptable object hellping us to create different stats for different enmies,
+    //Stats for the enemies, its a scriptable object helping us to create different stats for different enmies,
     //we can only use the scriptable objecgt here to share health becuase we are not haring of the same enemy types
     //so we wont have for example two barberians at the same time.
 
@@ -24,9 +22,10 @@ public class StateController : MonoBehaviour
     [HideInInspector] public Rigidbody2D rb2d;                                                      
     [HideInInspector] public Vector2 randomWanderPoint = Vector2.zero;
     [HideInInspector] public Vector2 lastSeenPoint = Vector2.zero;
+    [HideInInspector] public Vector2 lastPosition = Vector2.zero;
+    [HideInInspector] public float lastTimeMoved;
 
-    [HideInInspector] public float walkSpeed;
-    [HideInInspector] public float sprintSpeed;
+    [HideInInspector] public float speed;
 
     private bool aiActive;
 
@@ -40,11 +39,11 @@ public class StateController : MonoBehaviour
         //tankShooting = GetComponent<Complete.TankShooting>();
         //navMeshAgent = GetComponent<NavMeshAgent>();
         rb2d = GetComponent<Rigidbody2D>();
+        //Calculate agility for charecter
+        stats.agility = stats.agility + stats.agilityModifier;
+        stats.strengthModifier = 3;
 
-        stats.speedModifier = 1f;
 
-        walkSpeed = (float)((stats.speed + stats.speedModifier) * Time.deltaTime * 20 + (stats.agility / 5));
-        sprintSpeed = walkSpeed + (walkSpeed / 2);
     }
 
     //TODO: Probable going to use this DO NOT delete
@@ -85,5 +84,39 @@ public class StateController : MonoBehaviour
     private void OnExitState()
     {
         stateTimeElapsed = 0;
+    }
+
+    public void Speed(float _speed)
+    {
+        stats.speed = _speed;
+        speed = (float)(stats.speed + (3 + (stats.agility / 5)) * Time.deltaTime);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        //Do take damage animation
+        stats.health -= damage;
+
+        if (stats.health <= 0)
+        {
+            Die();
+        }
+    }
+
+    public int CalculateDamage()
+    {
+        return (((stats.strength + stats.strengthModifier) / 5));
+    }
+
+    void Die()
+    {
+        //Play death animation
+        //Drop crystal
+        Destroy(gameObject);
+    }
+
+    void DropCrystal()
+    {
+        //TODO: detirmine the crystel worth according to the monster stats
     }
 }

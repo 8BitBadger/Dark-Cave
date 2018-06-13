@@ -60,9 +60,7 @@ public class MapManager
     {
         if (useRandomSeed)
         {
-            //seed = System.DateTime.Today.Second.ToString();
             seed = System.DateTime.Now.Millisecond.ToString();
-
         }
         else
         {

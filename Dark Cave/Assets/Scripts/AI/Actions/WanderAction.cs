@@ -9,6 +9,7 @@ public class WanderAction : Action
 
     public override void Act(StateController controller)
     {
+        controller.Speed(controller.stats.walkSpeed);
         Wander(controller);
     }
 
@@ -38,7 +39,7 @@ public class WanderAction : Action
         {
             normalizedDir = (controller.randomWanderPoint - controller.rb2d.position).normalized;
 
-            controller.rb2d.velocity = new Vector2(Mathf.Lerp(0, normalizedDir.x * controller.walkSpeed, 0.8f), Mathf.Lerp(0, normalizedDir.y * controller.walkSpeed, 0.8f));
+            controller.rb2d.velocity = new Vector2(Mathf.Lerp(0, normalizedDir.x * controller.speed, 0.8f), Mathf.Lerp(0, normalizedDir.y * controller.speed, 0.8f));
         }
     }
 }

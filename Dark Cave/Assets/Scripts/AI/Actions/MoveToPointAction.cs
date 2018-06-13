@@ -16,6 +16,6 @@ public class MoveToPointAction : Action
     {
         normalizedDir = (controller.lastSeenPoint - controller.rb2d.position).normalized;
 
-        controller.rb2d.velocity = new Vector2(Mathf.Lerp(0, normalizedDir.x * controller.walkSpeed, 0.8f), Mathf.Lerp(0, normalizedDir.y * controller.walkSpeed, 0.8f));
+        controller.rb2d.velocity = new Vector2(Mathf.Lerp(0, normalizedDir.x * controller.speed, 0.8f), Mathf.Lerp(0, normalizedDir.y * controller.speed, 0.8f));
     }
 }

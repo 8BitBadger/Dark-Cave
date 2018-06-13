@@ -20,11 +20,15 @@ MonoBehaviour:
   health: 2
   endurance: 20
   speed: 3
-  speedModifier: 1
+  walkSpeed: 0.5
+  sprintSpeed: 4
+  strengthModifier: 0
+  agilityModifier: 0
+  staminaModifier: 0
+  intelligenceModifier: 0
   wanderDistance: 5
   attackRange: 5
   attackInterval: 1
-  baseDamage: 1
   viewRadius: 180
   viewAngle: 180
   viewDistance: 5

@@ -175,7 +175,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 12
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -282,7 +282,13 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 174812, guid: 976914285f5a5e341b8462812ecb8c43, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6195252, guid: 976914285f5a5e341b8462812ecb8c43, type: 2}
+    - {fileID: 114664212233123276, guid: 976914285f5a5e341b8462812ecb8c43, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 976914285f5a5e341b8462812ecb8c43, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1317937291
@@ -378,3 +384,22 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d253b2dcda5a4704fa49308eff711e4a, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1891800081 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 174812, guid: 976914285f5a5e341b8462812ecb8c43, type: 2}
+  m_PrefabInternal: {fileID: 158694880}
+--- !u!58 &1891800082
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1891800081}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.25

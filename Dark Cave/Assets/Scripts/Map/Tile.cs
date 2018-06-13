@@ -5,7 +5,7 @@ using System;
 
 public enum TileType
 {
-    None,
+    None = 1,
     Floor,
     Ground,
     Rock,
@@ -33,6 +33,9 @@ public class Tile
     //The type of room the tile is part of
     RoomType room = RoomType.None;
 
+    //The health of the tile
+    private int health;
+
     //External funtion to be called when the tile type is changed
     Action<Tile> cbTileTypeChanged;
 
@@ -49,10 +52,15 @@ public class Tile
             TileType oldType = type;
             //Set the type to the new type
             type = value;
+            
+            //Set the health of the tile acording the position in the type list
+            health = (int)type;
+
             //Using action deligate
             if (cbTileTypeChanged != null && oldType != type)
-            {
+            {        
                 cbTileTypeChanged(this);
+
             }
         }
     }
@@ -68,13 +76,11 @@ public class Tile
 
     public int Y { get; protected set; }
 
-
-
-    public Tile(int x, int y)
+    public Tile(int _x, int _y)
     {
         //The tiles co oordinates
-        this.X = x;
-        this.Y = y;
+        X = _x;
+        Y = _y;
     }
 
     public void RegisterTileTypeChangedCallback(Action<Tile> callback)
@@ -86,5 +92,13 @@ public class Tile
         cbTileTypeChanged -= callback;
     }
 	
-	
+	public void TakeDamage(int damage)
+    {
+        health -= damage;
+
+        if(health <= 0)
+        {
+            Type = TileType.Floor;
+        }
+    }
 }

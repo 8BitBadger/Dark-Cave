@@ -16,7 +16,7 @@ public class AttackAction : Action
     {
         if((Time.time - controller.timeSinceLastAttack) > controller.stats.attackInterval )
         {
-            controller.chaseTarget.gameObject.GetComponent<Player>().TakeDamage(controller.stats.baseDamage);
+            controller.chaseTarget.gameObject.GetComponent<Player>().TakeDamage(controller.CalculateDamage());
             controller.timeSinceLastAttack = Time.time;
         }
     }

@@ -31,10 +31,15 @@ public class ActorStats : ScriptableObject
     //The endurance of the Actor used for attacking, blocking and mining
     public int endurance;
     //The walk speed of the actor
-    public float speed;
+    [HideInInspector] public float speed;
+    public float walkSpeed;
+    public float sprintSpeed;
 
-    //The maximum speed moddifier for the actor 
-    [HideInInspector] public float speedModifier;
+    //Stat modifiers for the charecter
+    [HideInInspector] public int strengthModifier;
+    [HideInInspector] public int agilityModifier;
+    [HideInInspector] public int staminaModifier;
+    [HideInInspector] public int intelligenceModifier;
 
     //The wander distance of the AI
     public float wanderDistance;
@@ -43,8 +48,6 @@ public class ActorStats : ScriptableObject
     public float attackRange;
     //The times the player or AI can attack in a certain time
     public float attackInterval;
-    //The base damage the actor can do
-    public int baseDamage;
 
     //Used for the fow script
     public float viewRadius;
@@ -56,8 +59,4 @@ public class ActorStats : ScriptableObject
     //The abilities of the actor
     public List<Ability> abilities;
 
-    private void OnEnable()
-    {
-
-    }
 }

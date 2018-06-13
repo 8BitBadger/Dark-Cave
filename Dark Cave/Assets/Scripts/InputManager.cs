@@ -23,12 +23,13 @@ public class InputManager : MonoBehaviour
     {
         playerInstance = GameObject.FindGameObjectWithTag("Player").GetComponent("Player") as Player;
         cursorPrefab = Instantiate(cursorPrefab);
-        //Cursor.visible = false;
+        playerStats = playerInstance.stats;
+        Cursor.visible = false;
     }
 
     private void Update()
     {
-        cursorPrefab.transform.position = GetMousePosition();
+        cursorPrefab.transform.position = GetMousePosition2D();
 
         //TODO:Impliment build mode later in the game this is the camera movement for it
         //currFramePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -48,16 +49,19 @@ public class InputManager : MonoBehaviour
                 Tile tile = WorldManager.Instance.GetTileAtWorldCoord(GetMousePosForTile());
                 if (Vector2.Distance(new Vector2(tile.X, tile.Y), playerInstance.transform.position) < playerStats.attackRange)
                 {
-                    if (tile != null && tile.Type != TileType.Rock && tile.Room == RoomType.None)
+                    if (tile != null && tile.Type != TileType.Rock  && tile.Type != TileType.Floor && tile.Room == RoomType.None)
                     {
-                        tile.Type = buildModeTile;
+                        //tile.Type = buildModeTile;
+                        tile.TakeDamage(playerInstance.CalculateDamage());
+                        print("Tile Hit");
+                        print("Damage = " + playerInstance.CalculateDamage());
                     }
 
                     for (int i = 0; i < hit.Length; i++)
                     {
                         if (hit[i].collider.tag == "Enemy")
                         {
-                            hit[i].collider.GetComponent<Enemy>().TakeDamage(2);
+                            hit[i].collider.GetComponent<StateController>().TakeDamage(playerInstance.CalculateDamage());
                         }
                     }
                 }
