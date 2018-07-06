@@ -46,7 +46,7 @@ public class InputManager : MonoBehaviour
             {
                 RaycastHit2D[] hit = Physics2D.LinecastAll(GetMousePosition2D(), GetMousePosition2D());
 
-                Tile tile = WorldManager.Instance.GetTileAtWorldCoord(GetMousePosForTile());
+                MapSystem.Tile tile = MapSystem.WorldManager.Instance.GetTileAtWorldCoord(GetMousePosForTile());
                 if (Vector2.Distance(new Vector2(tile.X, tile.Y), playerInstance.transform.position) < playerStats.attackRange)
                 {
                     if (tile != null && tile.Type != TileType.Rock  && tile.Type != TileType.Floor && tile.Room == RoomType.None)

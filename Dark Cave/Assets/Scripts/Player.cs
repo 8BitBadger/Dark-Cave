@@ -100,7 +100,7 @@ public class Player : MonoBehaviour
                     int hitXPos = (int)hit[j].transform.position.x;
                     int hitYPos = (int)hit[j].transform.position.y;
 
-                    if (WorldManager.Instance.map.GetTileAt(hitXPos, hitYPos).Type != TileType.Floor && WorldManager.Instance.map.GetTileAt(hitXPos, hitYPos).Type != TileType.Room)
+                    if (MapSystem.WorldManager.Instance.map.GetTileAt(hitXPos, hitYPos).Type != TileType.Floor && MapSystem.WorldManager.Instance.map.GetTileAt(hitXPos, hitYPos).Type != TileType.Room)
                     {
                         tempSprite = hit[j].transform.GetComponent<SpriteRenderer>();
 

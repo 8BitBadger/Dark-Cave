@@ -67,7 +67,7 @@ public class PlayerFOW : MonoBehaviour
 
                 for (int j = 0; j < hit.Length - 1; j++)
                 {
-                    if (WorldManager.Instance.map.GetTileAt((int)hit[j].transform.position.x, (int)hit[j].transform.position.y).Type != TileType.Floor)
+                    if (MapSystem.WorldManager.Instance.map.GetTileAt((int)hit[j].transform.position.x, (int)hit[j].transform.position.y).Type != TileType.Floor)
                     {
                         tempSprite = hit[j].transform.GetComponent<SpriteRenderer>();
 
