@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6195252}
   - component: {fileID: 5004050}
   - component: {fileID: 114173213168324086}
-  - component: {fileID: 114664212233123276}
+  - component: {fileID: 114110058468991948}
   m_Layer: 0
   m_Name: Tentacle
   m_TagString: Enemy
@@ -138,6 +138,17 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 174812}
   m_IsPrefabParent: 1
+--- !u!114 &114110058468991948
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d28a4be380d9cd94b8c1cef4c83eae2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114173213168324086
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -158,18 +169,7 @@ MonoBehaviour:
   rb2d: {fileID: 0}
   randomWanderPoint: {x: 0, y: 0}
   lastSeenPoint: {x: 0, y: 0}
-  walkSpeed: 0
-  sprintSpeed: 0
+  lastPosition: {x: 0, y: 0}
+  lastTimeMoved: 0
+  speed: 0
   timeSinceLastAttack: 0
---- !u!114 &114664212233123276
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 174812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1ff7d751ef89ef4badb68b6c8643d0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: 405b889cd26b8c44b93729c70c1f457c, type: 2}

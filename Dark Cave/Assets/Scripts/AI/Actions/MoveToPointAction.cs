@@ -1,21 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "PluggableAI/Actions/Move To Last Seen Point")]
-public class MoveToPointAction : Action
+namespace AiLogic
 {
-    Vector2 normalizedDir;
-
-    public override void Act(StateController controller)
+    [CreateAssetMenu(menuName = "PluggableAI/Actions/Move To Last Seen Point")]
+    public class MoveToPointAction : Action
     {
-        MoveToPoint(controller);
-    }
+        Vector2 normalizedDir;
 
-    private void MoveToPoint(StateController controller)
-    {
-        normalizedDir = (controller.lastSeenPoint - controller.rb2d.position).normalized;
+        public override void Act(StateController controller)
+        {
+            MoveToPoint(controller);
+        }
 
-        controller.rb2d.velocity = new Vector2(Mathf.Lerp(0, normalizedDir.x * controller.speed, 0.8f), Mathf.Lerp(0, normalizedDir.y * controller.speed, 0.8f));
+        private void MoveToPoint(StateController controller)
+        {
+            normalizedDir = (controller.lastSeenPoint - controller.rb2d.position).normalized;
+
+            controller.rb2d.velocity = new Vector2(Mathf.Lerp(0, normalizedDir.x * controller.speed, 0.8f), Mathf.Lerp(0, normalizedDir.y * controller.speed, 0.8f));
+        }
     }
 }

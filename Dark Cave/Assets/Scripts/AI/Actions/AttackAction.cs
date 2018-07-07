@@ -1,23 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "PluggableAI/Actions/Attack")]
-public class AttackAction : Action
+namespace AiLogic
 {
-    public override void Act(StateController controller)
+    [CreateAssetMenu(menuName = "PluggableAI/Actions/Attack")]
+    public class AttackAction : Action
     {
-       //TODO: Make it so sprite is showing in the general direction of the player
-
-        Attack(controller);
-    }
-
-    private void Attack(StateController controller)
-    {
-        if((Time.time - controller.timeSinceLastAttack) > controller.stats.attackInterval )
+        public override void Act(StateController controller)
         {
-            controller.chaseTarget.gameObject.GetComponent<Player>().TakeDamage(controller.CalculateDamage());
-            controller.timeSinceLastAttack = Time.time;
+            //TODO: Make it so sprite is showing in the general direction of the player
+
+            Attack(controller);
+        }
+
+        private void Attack(StateController controller)
+        {
+            if ((Time.time - controller.timeSinceLastAttack) > controller.stats.attackInterval)
+            {
+                controller.chaseTarget.gameObject.GetComponent<Player>().TakeDamage(controller.CalculateDamage());
+                controller.timeSinceLastAttack = Time.time;
+            }
         }
     }
 }

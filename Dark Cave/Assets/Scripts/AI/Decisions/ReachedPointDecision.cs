@@ -1,41 +1,42 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "PluggableAI/Decisions/Reached Point")]
-public class ReachedPointDecision : Decision
+namespace AiLogic
 {
-    bool firstLoop = true;
-
-    public override bool Decide(StateController controller)
+    [CreateAssetMenu(menuName = "PluggableAI/Decisions/Reached Point")]
+    public class ReachedPointDecision : Decision
     {
-        if(firstLoop)
-        {
-            firstLoop = false;
-            controller.lastTimeMoved = Time.time;
-            controller.lastPosition = controller.transform.position;
-        }
-        return ReachedPoint(controller);
-    }
+        bool firstLoop = true;
 
-    private bool ReachedPoint(StateController controller)
-    {
-        if (Vector2.Distance(controller.rb2d.position, controller.lastSeenPoint) < 0.4f)
+        public override bool Decide(StateController controller)
         {
-            return true;
-        }
-
-        if ((Time.time - controller.lastTimeMoved) > 3)
-        {
-            if (Vector2.Distance(controller.lastPosition, controller.transform.position) < 0.1f)
+            if (firstLoop)
             {
-                firstLoop = true;
+                firstLoop = false;
+                controller.lastTimeMoved = Time.time;
+                controller.lastPosition = controller.transform.position;
+            }
+            return ReachedPoint(controller);
+        }
+
+        private bool ReachedPoint(StateController controller)
+        {
+            if (Vector2.Distance(controller.rb2d.position, controller.lastSeenPoint) < 0.4f)
+            {
                 return true;
             }
-            controller.lastTimeMoved = Time.time;
-            controller.lastPosition = controller.transform.position;
-        }
 
-        return false;
+            if ((Time.time - controller.lastTimeMoved) > 3)
+            {
+                if (Vector2.Distance(controller.lastPosition, controller.transform.position) < 0.1f)
+                {
+                    firstLoop = true;
+                    return true;
+                }
+                controller.lastTimeMoved = Time.time;
+                controller.lastPosition = controller.transform.position;
+            }
+
+            return false;
+        }
     }
 }

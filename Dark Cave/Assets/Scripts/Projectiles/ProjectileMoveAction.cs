@@ -1,33 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Projectile/Actions/Move")]
-public class ProjectileMoveAction : ProjectileAction
+namespace ProjectileLogic
 {
-    private Vector2 staticDir;
-    private bool initDone = false;
-    public int moveSpeed;
-
-    private void Init(Projectile projectile)
+    [CreateAssetMenu(menuName = "Projectile/Actions/Move")]
+    public class ProjectileMoveAction : ProjectileAction
     {
-        staticDir = new Vector2(projectile.Target.position.x, projectile.Target.position.y) - projectile.Rb2d.position;
-        projectile.Rb2d.MoveRotation(Mathf.Atan2(staticDir.y, staticDir.x) * Mathf.Rad2Deg);
-    }
+        private Vector2 staticDir;
+        private bool initDone = false;
+        public int moveSpeed;
 
-    public override void DoAction(Projectile projectile)
-    {
-        if(initDone == false)
+        private void Init(Projectile projectile)
         {
-            Init(projectile);
-            initDone = true;
+            staticDir = new Vector2(projectile.Target.position.x, projectile.Target.position.y) - projectile.Rb2d.position;
+            projectile.Rb2d.MoveRotation(Mathf.Atan2(staticDir.y, staticDir.x) * Mathf.Rad2Deg);
         }
-        Move(projectile);
-    }
 
-    private void Move(Projectile projectile)
-    {
+        public override void DoAction(Projectile projectile)
+        {
+            if (initDone == false)
+            {
+                Init(projectile);
+                initDone = true;
+            }
+            Move(projectile);
+        }
 
-        projectile.Rb2d.velocity = new Vector2 (staticDir.x + moveSpeed * Time.deltaTime, staticDir.y + moveSpeed * Time.deltaTime);
+        private void Move(Projectile projectile)
+        {
+
+            projectile.Rb2d.velocity = new Vector2(staticDir.x + moveSpeed * Time.deltaTime, staticDir.y + moveSpeed * Time.deltaTime);
+        }
     }
 }

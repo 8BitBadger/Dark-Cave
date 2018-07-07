@@ -1,20 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class FlexibleUI : MonoBehaviour
+namespace FlexibleUI
 {
-
-    public FlexibleUIData skinData;
-
-    protected virtual void OnSkinUI()
+    public class FlexibleUI : MonoBehaviour
     {
 
-    }
+        public FlexibleUIData skinData;
 
-    public virtual void Awake()
-    {
-        OnSkinUI();
-    }
+        protected virtual void OnSkinUI()
+        {
 
+        }
+
+        public virtual void Awake()
+        {
+            OnSkinUI();
+        }
+    }
 }

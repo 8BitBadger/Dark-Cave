@@ -1,23 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "PluggableAI/Decisions/Attack")]
-public class AttackDecision : Decision
+namespace AiLogic
 {
-    public override bool Decide(StateController controller)
+    [CreateAssetMenu(menuName = "PluggableAI/Decisions/Attack")]
+    public class AttackDecision : Decision
     {
-        return Attack(controller);
-    }
-
-    private bool Attack(StateController controller)
-    {
-        if (Vector2.Distance(controller.chaseTarget.position, controller.rb2d.position) <= controller.stats.attackRange)
+        public override bool Decide(StateController controller)
         {
-            controller.rb2d.velocity = Vector2.zero;
-            return true;
+            return Attack(controller);
         }
 
-        return false;
+        private bool Attack(StateController controller)
+        {
+            if (Vector2.Distance(controller.chaseTarget.position, controller.rb2d.position) <= controller.stats.attackRange)
+            {
+                controller.rb2d.velocity = Vector2.zero;
+                return true;
+            }
+
+            return false;
+        }
     }
 }

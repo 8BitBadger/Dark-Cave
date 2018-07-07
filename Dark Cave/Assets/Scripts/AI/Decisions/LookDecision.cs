@@ -1,39 +1,40 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "PluggableAI/Decisions/Look")]
-public class LookDecision : Decision
+namespace AiLogic
 {
-    public override bool Decide(StateController controller)
+    [CreateAssetMenu(menuName = "PluggableAI/Decisions/Look")]
+    public class LookDecision : Decision
     {
-        return Look(controller);
-    }
-
-    private bool Look(StateController controller)
-    {
-        //Cast a collision circle only in the raduised area and on the target target mask, this is to check if the target is in the raduis to be able to pick it up
-        Collider2D[] targetInViewRaduis = Physics2D.OverlapCircleAll(controller.rb2d.position, controller.stats.viewRadius, controller.stats.targetLayer);
-
-        //Loop through the targets that are in range of the fow
-        for (int i = 0; i < targetInViewRaduis.Length; i++)
+        public override bool Decide(StateController controller)
         {
-            Transform rayCastTarget = targetInViewRaduis[i].transform;
-            Vector2 dirToRaycast = (rayCastTarget.position - controller.transform.position).normalized;
+            return Look(controller);
+        }
 
-            if (Vector2.Angle(controller.transform.right, dirToRaycast) < controller.stats.viewAngle / 2)
+        private bool Look(StateController controller)
+        {
+            //Cast a collision circle only in the raduised area and on the target target mask, this is to check if the target is in the raduis to be able to pick it up
+            Collider2D[] targetInViewRaduis = Physics2D.OverlapCircleAll(controller.rb2d.position, controller.stats.viewRadius, controller.stats.targetLayer);
+
+            //Loop through the targets that are in range of the fow
+            for (int i = 0; i < targetInViewRaduis.Length; i++)
             {
-                float distanceToTarget = Vector2.Distance(controller.transform.position, rayCastTarget.position);
+                Transform rayCastTarget = targetInViewRaduis[i].transform;
+                Vector2 dirToRaycast = (rayCastTarget.position - controller.transform.position).normalized;
 
-                if (!Physics2D.Raycast(controller.rb2d.position, dirToRaycast, distanceToTarget, controller.stats.obstacleMask))
+                if (Vector2.Angle(controller.transform.right, dirToRaycast) < controller.stats.viewAngle / 2)
                 {
-                    controller.chaseTarget = rayCastTarget;
-                    controller.lastSeenPoint = controller.chaseTarget.position;
+                    float distanceToTarget = Vector2.Distance(controller.transform.position, rayCastTarget.position);
 
-                    return true;
+                    if (!Physics2D.Raycast(controller.rb2d.position, dirToRaycast, distanceToTarget, controller.stats.obstacleMask))
+                    {
+                        controller.chaseTarget = rayCastTarget;
+                        controller.lastSeenPoint = controller.chaseTarget.position;
+
+                        return true;
+                    }
                 }
             }
+            return false;
         }
-        return false;
     }
 }

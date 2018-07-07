@@ -1,22 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-[CreateAssetMenu(menuName = "PluggableAI/Actions/Run")]
-public class RunAction : Action
+﻿using UnityEngine;
+namespace AiLogic
 {
-    Vector2 normalizedDir;
-
-    public override void Act(StateController controller)
+    [CreateAssetMenu(menuName = "PluggableAI/Actions/Run")]
+    public class RunAction : Action
     {
-        controller.Speed(controller.stats.sprintSpeed);
-        Run(controller);
-    }
+        Vector2 normalizedDir;
 
-    private void Run(StateController controller)
-    {
-        normalizedDir = (new Vector2(controller.chaseTarget.position.x, controller.chaseTarget.position.y) - controller.rb2d.position).normalized;
+        public override void Act(StateController controller)
+        {
+            controller.Speed(controller.stats.sprintSpeed);
+            Run(controller);
+        }
 
-        controller.rb2d.velocity = new Vector2(Mathf.Lerp(0, normalizedDir.x * controller.speed, 0.8f), Mathf.Lerp(0, normalizedDir.y * controller.speed, 0.8f));
+        private void Run(StateController controller)
+        {
+            normalizedDir = (new Vector2(controller.chaseTarget.position.x, controller.chaseTarget.position.y) - controller.rb2d.position).normalized;
+
+            controller.rb2d.velocity = new Vector2(Mathf.Lerp(0, normalizedDir.x * controller.speed, 0.8f), Mathf.Lerp(0, normalizedDir.y * controller.speed, 0.8f));
+        }
     }
 }

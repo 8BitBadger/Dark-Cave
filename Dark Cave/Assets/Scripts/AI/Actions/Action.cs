@@ -1,8 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public abstract class Action : ScriptableObject
+namespace AiLogic
 {
-    public abstract void Act(StateController controller);
+    public abstract class Action : ScriptableObject
+    {
+        public abstract void Act(StateController controller);
+    }
 }

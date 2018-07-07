@@ -61,7 +61,7 @@ public class InputManager : MonoBehaviour
                     {
                         if (hit[i].collider.tag == "Enemy")
                         {
-                            hit[i].collider.GetComponent<StateController>().TakeDamage(playerInstance.CalculateDamage());
+                            hit[i].collider.GetComponent<AiLogic.StateController>().TakeDamage(playerInstance.CalculateDamage());
                         }
                     }
                 }

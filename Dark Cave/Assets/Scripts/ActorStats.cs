@@ -57,6 +57,6 @@ public class ActorStats : ScriptableObject
     public LayerMask targetLayer;
 
     //The abilities of the actor
-    public List<Ability> abilities;
+    public List<AbilitySystem.Ability> abilities;
 
 }
