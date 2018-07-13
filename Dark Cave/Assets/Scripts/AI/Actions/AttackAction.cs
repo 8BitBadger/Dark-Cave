@@ -16,7 +16,7 @@ namespace AiLogic
         {
             if ((Time.time - controller.timeSinceLastAttack) > controller.stats.attackInterval)
             {
-                controller.chaseTarget.gameObject.GetComponent<Player>().TakeDamage(controller.CalculateDamage());
+                controller.chaseTarget.gameObject.GetComponent<EventCbSystem.PlayerLogic>().TakeDamage(controller.CalculateDamage());
                 controller.timeSinceLastAttack = Time.time;
             }
         }

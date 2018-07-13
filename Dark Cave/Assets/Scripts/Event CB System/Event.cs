@@ -70,4 +70,14 @@ namespace EventCbSystem
 
         */
     }
+
+    public class ActorAttackEvent : Event<ActorAttackEvent>
+    {
+        public GameObject ActorGO;
+    }
+
+    public class ActorHitEvent : Event<ActorHitEvent>
+    {
+        public GameObject ActorGO;
+    }
 }

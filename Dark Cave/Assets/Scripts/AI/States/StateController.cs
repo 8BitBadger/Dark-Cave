@@ -44,7 +44,7 @@ namespace AiLogic
             stats.agility = stats.agility + stats.agilityModifier;
             stats.strengthModifier = 3;
 
-
+            GetComponent<SpriteRenderer>().color = new Color(0f, 0f, 0f);
         }
 
         //TODO: Probable going to use this DO NOT delete

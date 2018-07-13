@@ -1,22 +1,39 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
 public class PlayerFOW : MonoBehaviour
 {
+    //The Rigidbody2D for the Actor
+    private Rigidbody2D rb2d;
+
     Vector2 previousPosition;
-    public LayerMask _obstaclesLayer;
 
-    Rigidbody2D rb2d;
+    //The layers that are used for the FOW scanning
+    private int scanLayers;
 
-    private void Start()
+    // Use this for initialization
+    void Start()
     {
-        _obstaclesLayer = LayerMask.GetMask("Obstacles");
+        int floorLayer = 1 << LayerMask.NameToLayer("Floor");
+        int obstacleLayer = 1 << LayerMask.NameToLayer("Obstacles");
+        int enemyLayer = 1 << LayerMask.NameToLayer("Enemy");
+
+        scanLayers = floorLayer | obstacleLayer | enemyLayer;
+
+        if (gameObject.GetComponent<Rigidbody2D>())
+        {
+            rb2d = gameObject.GetComponent<Rigidbody2D>();
+        }
     }
 
-    public void StartFOWCheck(Rigidbody2D _rb2d)
+    // Update is called once per frame
+    void Update()
     {
-        rb2d = _rb2d;
+        StartFOWCheck();
+    }
+
+    public void StartFOWCheck()
+    {
         StartCoroutine("CheckFOW");
     }
 
@@ -24,29 +41,17 @@ public class PlayerFOW : MonoBehaviour
     {
         if (rb2d.position != previousPosition)
         {
-
-
             //The sprite renderer for the sprite
             SpriteRenderer tempSprite;
 
-            //The distance calculation from the player
-            //Use this later to make the game look prity prity lol
-            //float tileDistance;
-
-            //ATTEMPT 3
-            //OPTIMIZE!!!
-            //Do Physics2D.OverlapCircleAll to get the list of tiles to light u.
-            //Then get the ground tiles in that list
-            //Then rycast to those tiles and reset the tiles behind them to black.
-
             //How many rays to use for the FOW
-            int RaysToShoot = 24;
+            int RaysToShoot = 40;
             //The distance the charecter can see
-            int viewDistance = 8;
+            int viewDistance = 16;
             //The starting angel for the FOW
             float angle = 0;
             //The max array size for the hit from the raycast;
-            RaycastHit2D[] hit = new RaycastHit2D[15];
+            RaycastHit2D[] hits = new RaycastHit2D[15];
             //The direction of the next raycast
             Vector3 dir;
             //The angle of the ray cast in x and y coordinates
@@ -60,16 +65,29 @@ public class PlayerFOW : MonoBehaviour
 
                 dir = new Vector3(transform.position.x + x, transform.position.y + y, 0);
 
-                //Debug.DrawLine(transform.position, dir, Color.red);
+                Debug.DrawLine(transform.position, dir, Color.red);
 
-                hit = Physics2D.LinecastAll(transform.position, dir, _obstaclesLayer);
-                //Physics2D.LinecastNonAlloc(transform.position, dir, hit, obstaclesLayer);
+                hits = Physics2D.LinecastAll(transform.position, dir, scanLayers);
 
-                for (int j = 0; j < hit.Length - 1; j++)
+                for (int j = 0; j < hits.Length - 1; j++)
                 {
-                    if (MapSystem.WorldManager.Instance.map.GetTileAt((int)hit[j].transform.position.x, (int)hit[j].transform.position.y).Type != TileType.Floor)
+                    if (hits[j].transform.tag == "Enemy")
                     {
-                        tempSprite = hit[j].transform.GetComponent<SpriteRenderer>();
+                        tempSprite = hits[j].transform.GetComponent<SpriteRenderer>();
+                        if (tempSprite.color == new Color(0f, 0f, 0f))
+                        {
+                            tempSprite.color = new Color(1f, 1f, 1f);
+                        }
+
+                    }
+
+                    int hitXPos = (int)hits[j].transform.position.x;
+                    int hitYPos = (int)hits[j].transform.position.y;
+
+
+                    if (MapSystem.WorldManager.Instance.map.GetTileAt(hitXPos, hitYPos).Type != TileType.Floor && MapSystem.WorldManager.Instance.map.GetTileAt(hitXPos, hitYPos).Type != TileType.Room)
+                    {
+                        tempSprite = hits[j].transform.GetComponent<SpriteRenderer>();
 
                         if (tempSprite.color != new Color(1f, 1f, 1f))
                         {
@@ -79,7 +97,7 @@ public class PlayerFOW : MonoBehaviour
                     }
                     else
                     {
-                        tempSprite = hit[j].transform.GetComponent<SpriteRenderer>();
+                        tempSprite = hits[j].transform.GetComponent<SpriteRenderer>();
 
                         if (tempSprite.color != new Color(1f, 1f, 1f))
                         {

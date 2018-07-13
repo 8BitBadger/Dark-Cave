@@ -7,7 +7,7 @@ public class InputManager : MonoBehaviour
     public GameObject cursorPrefab;
 
     public ActorStats playerStats;
-    private Player playerInstance;
+    private EventCbSystem.PlayerLogic playerLogic;
 
     //The world coordinates of the mouse in the last frame
     Vector3 lastFramePosition;
@@ -21,9 +21,9 @@ public class InputManager : MonoBehaviour
 
     private void Start()
     {
-        playerInstance = GameObject.FindGameObjectWithTag("Player").GetComponent("Player") as Player;
+        playerLogic = GameObject.FindGameObjectWithTag("Player").GetComponent<EventCbSystem.PlayerLogic>() as EventCbSystem.PlayerLogic;
         cursorPrefab = Instantiate(cursorPrefab);
-        playerStats = playerInstance.stats;
+        playerStats = playerLogic.stats;
         Cursor.visible = false;
     }
 
@@ -47,21 +47,21 @@ public class InputManager : MonoBehaviour
                 RaycastHit2D[] hit = Physics2D.LinecastAll(GetMousePosition2D(), GetMousePosition2D());
 
                 MapSystem.Tile tile = MapSystem.WorldManager.Instance.GetTileAtWorldCoord(GetMousePosForTile());
-                if (Vector2.Distance(new Vector2(tile.X, tile.Y), playerInstance.transform.position) < playerStats.attackRange)
-                {
+                if (Vector2.Distance(new Vector2(tile.X, tile.Y), playerLogic.transform.position) < playerStats.attackRange)
+                { 
                     if (tile != null && tile.Type != TileType.Rock  && tile.Type != TileType.Floor && tile.Room == RoomType.None)
                     {
                         //tile.Type = buildModeTile;
-                        tile.TakeDamage(playerInstance.CalculateDamage());
+                        tile.TakeDamage(playerLogic.CalculateDamage());
                         print("Tile Hit");
-                        print("Damage = " + playerInstance.CalculateDamage());
+                        print("Damage = " + playerLogic.CalculateDamage());
                     }
 
                     for (int i = 0; i < hit.Length; i++)
                     {
                         if (hit[i].collider.tag == "Enemy")
                         {
-                            hit[i].collider.GetComponent<AiLogic.StateController>().TakeDamage(playerInstance.CalculateDamage());
+                            hit[i].collider.GetComponent<AiLogic.StateController>().TakeDamage(playerLogic.CalculateDamage());
                         }
                     }
                 }

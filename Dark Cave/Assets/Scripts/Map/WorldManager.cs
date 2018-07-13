@@ -94,7 +94,7 @@ namespace MapSystem
                     tile_sr.sortingLayerName = "Ground";
                     //NOTE: RE ENABLE THIS FOR FOW
                     //TODO: Make it so that fog of war can be toggled from the inspector
-                    //tile_sr.color = new Color(0f, 0f, 0f);
+                    tile_sr.color = new Color(0f, 0f, 0f);
 
                     BoxCollider2D tile_Boxcol = tile_go.AddComponent<BoxCollider2D>();
                     tile_Boxcol.size = Vector2.one;

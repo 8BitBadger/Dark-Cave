@@ -19,7 +19,7 @@ namespace ProjectileLogic
             dir.Normalize();
             float rotateAmount = Vector3.Cross(dir, projectile.Rb2d.transform.up).z;
 
-            projectile.Rb2d.angularVelocity = rotateAmount * (rotateSpeed * Time.deltaTime);
+            projectile.Rb2d.angularVelocity = -rotateAmount * (rotateSpeed * Time.deltaTime);
             projectile.Rb2d.velocity = dir * (moveSpeed * Time.deltaTime);
         }
     }
