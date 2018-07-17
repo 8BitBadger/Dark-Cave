@@ -39,35 +39,35 @@ namespace EventCbSystem
 
         void DamagePlayer()
         {
-            ActorDamageEvent actorDamageEventInfo = new ActorDamageEvent();
-            actorDamageEventInfo.Description = "Actorr] " + gameObject.name + " has taken damage.";
-            actorDamageEventInfo.ActorGO = gameObject;
-            actorDamageEventInfo.FireEvent();
+            PlayerDamageEvent playerDamageEventInfo = new PlayerDamageEvent();
+            playerDamageEventInfo.Description = "Actorr] " + gameObject.name + " has taken damage.";
+            playerDamageEventInfo.ActorGO = gameObject;
+            playerDamageEventInfo.FireEvent();
         }
 
         void PlayerDie()
         {
-            ActorDeathEvent actorDeathEventInfo = new ActorDeathEvent();
-            actorDeathEventInfo.Description = "Actor "+ gameObject.name +" has died.";
-            actorDeathEventInfo.ActorGO = gameObject;
-            actorDeathEventInfo.FireEvent();
+            PlayerDeathEvent playerDeathEventInfo = new PlayerDeathEvent();
+            playerDeathEventInfo.Description = "Actor "+ gameObject.name +" has died.";
+            playerDeathEventInfo.ActorGO = gameObject;
+            playerDeathEventInfo.FireEvent();
 
             Destroy(gameObject);
         } 
         void PlayerAttack()
         {
-            ActorAttackEvent actorAttackEventiInfo = new ActorAttackEvent();
-            actorAttackEventiInfo.Description = "Unit " + gameObject.name + " has just attacked";
-            actorAttackEventiInfo.ActorGO = gameObject;
-            actorAttackEventiInfo.FireEvent();
+            PlayerAttackEvent playerAttackEventiInfo = new PlayerAttackEvent();
+            playerAttackEventiInfo.Description = "Unit " + gameObject.name + " has just attacked";
+            playerAttackEventiInfo.ActorGO = gameObject;
+            playerAttackEventiInfo.FireEvent();
         }
 
         void PlayerHit()
         {
-            ActorHitEvent actorHitEventInfo = new ActorHitEvent();
-            actorHitEventInfo.Description = "Actor " + gameObject.name + " has hit something";
-            actorHitEventInfo.ActorGO = gameObject;
-            actorHitEventInfo.FireEvent();
+            PlayerHitEvent playerHitEventInfo = new PlayerHitEvent();
+            playerHitEventInfo.Description = "Actor " + gameObject.name + " has hit something";
+            playerHitEventInfo.ActorGO = gameObject;
+            playerHitEventInfo.FireEvent();
         }
     }
 }

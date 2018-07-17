@@ -16,7 +16,7 @@ namespace EventCbSystem
         private bool hasFired;
         public delegate void EventListener(T info);
         private static event EventListener Listeners;
-        
+
         public static void RegisterListener(EventListener listener)
         {
             Listeners += listener;
@@ -44,40 +44,5 @@ namespace EventCbSystem
     public class DebugEvent : Event<DebugEvent>
     {
         public int VerbosityLevel;
-    }
-
-    public class ActorDeathEvent : Event<ActorDeathEvent>
-    {
-        public GameObject ActorGO;
-        /*
-
-        Info about cause of death, our killer, etc...
-
-        Could be a struct, readonly, etc...
-
-        */
-    }
-
-    public class ActorDamageEvent : Event<ActorDamageEvent>
-    {
-        public GameObject ActorGO;
-
-        /*
-
-        Info about cause of death, our killer, etc...
-
-        Could be a struct, readonly, etc...
-
-        */
-    }
-
-    public class ActorAttackEvent : Event<ActorAttackEvent>
-    {
-        public GameObject ActorGO;
-    }
-
-    public class ActorHitEvent : Event<ActorHitEvent>
-    {
-        public GameObject ActorGO;
     }
 }

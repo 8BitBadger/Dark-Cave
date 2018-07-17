@@ -7,7 +7,10 @@ public class InputManager : MonoBehaviour
     public GameObject cursorPrefab;
 
     public ActorStats playerStats;
+
     private EventCbSystem.PlayerLogic playerLogic;
+    private EventCbSystem.EnemyLogic enemyLogic;
+    private EventCbSystem.TileLogic tileLogic;
 
     //The world coordinates of the mouse in the last frame
     Vector3 lastFramePosition;
@@ -29,8 +32,6 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
-        cursorPrefab.transform.position = GetMousePosition2D();
-
         //TODO:Impliment build mode later in the game this is the camera movement for it
         //currFramePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         //currFramePosition.z = 0;
@@ -68,6 +69,10 @@ public class InputManager : MonoBehaviour
                 timeSinceLastAttack = Time.time;
             }
         }
+    }
+    private void LateUpdate()
+    {
+        cursorPrefab.transform.position = GetMousePosition2D();
     }
 
     Vector3 GetMousePosition()

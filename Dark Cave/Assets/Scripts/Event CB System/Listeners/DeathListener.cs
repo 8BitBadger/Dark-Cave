@@ -11,12 +11,16 @@ namespace EventCbSystem
         // Use this for initialization
         void Start()
         {
-            ActorDeathEvent.RegisterListener(OnActorDeath);
+            PlayerDeathEvent.RegisterListener(OnPlayerDeath);
+            EnemyDeathEvent.RegisterListener(OnEnemyDeath);
+            TileDeathEvent.RegisterListener(OnTileDeath);
         }
 
         void OnDestroy()
         {
-            ActorDeathEvent.UnregisterListener(OnActorDeath);
+            PlayerDeathEvent.UnregisterListener(OnPlayerDeath);
+            EnemyDeathEvent.UnregisterListener(OnEnemyDeath);
+            TileDeathEvent.UnregisterListener(OnTileDeath);
         }
 
         // Update is called once per frame
@@ -25,13 +29,23 @@ namespace EventCbSystem
 
         }
 
-        void OnActorDeath(ActorDeathEvent actorDeath)
+        void OnPlayerDeath(PlayerDeathEvent playerDeath)
         {
-            if (actorDeath.ActorGO.tag == "Enemy")
+            Debug.Log("I hear " + playerDeath.ActorGO.name + " has taken damage, that is to bad, but at least we know the Event cb system is working fine now - Report from the DamageListener");
+        }
+
+        void OnEnemyDeath(EnemyDeathEvent enemyDeath)
+        {
+            if (enemyDeath.ActorGO.tag == "Enemy")
             {
-                Instantiate(CrystalToSpawn, actorDeath.ActorGO.transform);
+                Instantiate(CrystalToSpawn, enemyDeath.ActorGO.transform);
             }
-            Debug.Log("I hear " + actorDeath.ActorGO.name + " has taken damage, that is to bad, but at least we know the Event cb system is working fine now - Report from the DamageListener");
+            Debug.Log("I hear " + enemyDeath.ActorGO.name + " has taken damage, that is to bad, but at least we know the Event cb system is working fine now - Report from the DamageListener");
+        }
+
+        void OnTileDeath(TileDeathEvent tileDeath)
+        {
+            Debug.Log("I hear " + tileDeath.ActorGO.name + " has taken damage, that is to bad, but at least we know the Event cb system is working fine now - Report from the DamageListener");
         }
     }
 }

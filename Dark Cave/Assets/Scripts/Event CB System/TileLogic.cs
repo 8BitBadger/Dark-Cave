@@ -19,42 +19,44 @@ namespace EventCbSystem
           
         }
         
-        void HealTile()
+        void HealTile(MapSystem.Tile _tile)
         {
             
         }
 
-        void DamageTile()
+        void DamageTile(MapSystem.Tile _tile)
         {
-            ActorDamageEvent actorDamageEventInfo = new ActorDamageEvent();
-            actorDamageEventInfo.Description = "Actorr] " + gameObject.name + " has taken damage.";
-            actorDamageEventInfo.ActorGO = gameObject;
-            actorDamageEventInfo.FireEvent();
+            TileDamageEvent tileDamageEventInfo = new TileDamageEvent();
+
+
+            tileDamageEventInfo.Description = "Actorr] " + gameObject.name + " has taken damage.";
+            tileDamageEventInfo.ActorGO = gameObject;
+            tileDamageEventInfo.FireEvent();
         }
 
-        void TileDie()
+        void TileDie(MapSystem.Tile _tile)
         {
-            ActorDeathEvent actorDeathEventInfo = new ActorDeathEvent();
-            actorDeathEventInfo.Description = "Actor "+ gameObject.name +" has died.";
-            actorDeathEventInfo.ActorGO = gameObject;
-            actorDeathEventInfo.FireEvent();
+            TileDeathEvent tileDeathEventInfo = new TileDeathEvent();
+            tileDeathEventInfo.Description = "Actor "+ gameObject.name +" has died.";
+            tileDeathEventInfo.ActorGO = gameObject;
+            tileDeathEventInfo.FireEvent();
 
             Destroy(gameObject);
         } 
-        void TileAttack()
+        void TileAttack(MapSystem.Tile _tile)
         {
-            ActorAttackEvent actorAttackEventiInfo = new ActorAttackEvent();
-            actorAttackEventiInfo.Description = "Unit " + gameObject.name + " has just attacked";
-            actorAttackEventiInfo.ActorGO = gameObject;
-            actorAttackEventiInfo.FireEvent();
+            TileAttackEvent tileAttackEventiInfo = new TileAttackEvent();
+            tileAttackEventiInfo.Description = "Unit " + gameObject.name + " has just attacked";
+            tileAttackEventiInfo.ActorGO = gameObject;
+            tileAttackEventiInfo.FireEvent();
         }
 
-        void TileHit()
+        void TileHit(MapSystem.Tile _tile)
         {
-            ActorHitEvent actorHitEventInfo = new ActorHitEvent();
-            actorHitEventInfo.Description = "Actor " + gameObject.name + " has hit something";
-            actorHitEventInfo.ActorGO = gameObject;
-            actorHitEventInfo.FireEvent();
+            TileHitEvent tileHitEventInfo = new TileHitEvent();
+            tileHitEventInfo.Description = "Actor " + gameObject.name + " has hit something";
+            tileHitEventInfo.ActorGO = gameObject;
+            tileHitEventInfo.FireEvent();
         }
     }
 }

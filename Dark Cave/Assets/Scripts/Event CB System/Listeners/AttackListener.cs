@@ -9,12 +9,16 @@ public class AttackListener : MonoBehaviour
         // Use this for initialization
         void Start()
         {
-            ActorAttackEvent.RegisterListener(OnActorAttack);
+            PlayerAttackEvent.RegisterListener(OnPlayerAttack);
+            EnemyAttackEvent.RegisterListener(OnEnemyAttack);
+            TileAttackEvent.RegisterListener(OnTileAttack);
         }
 
         void OnDestroy()
         {
-            ActorAttackEvent.UnregisterListener(OnActorAttack);
+            PlayerAttackEvent.UnregisterListener(OnPlayerAttack);
+            EnemyAttackEvent.UnregisterListener(OnEnemyAttack);
+            TileAttackEvent.UnregisterListener(OnTileAttack);
         }
 
         // Update is called once per frame
@@ -23,9 +27,19 @@ public class AttackListener : MonoBehaviour
 
         }
 
-        void OnActorAttack(ActorAttackEvent actorAttack)
+        void OnPlayerAttack(PlayerAttackEvent playerAttack)
         {
-            Debug.Log("I hear " + actorAttack.ActorGO.name + " has taken damage, that is to bad, but at least we know the Event cb system is working fine now - Report from the DamageListener");
+            Debug.Log("I hear " + playerAttack.ActorGO.name + " has taken damage, that is to bad, but at least we know the Event cb system is working fine now - Report from the DamageListener");
+        }
+
+        void OnEnemyAttack(EnemyAttackEvent enemyAttack)
+        {
+            Debug.Log("I hear " + enemyAttack.ActorGO.name + " has taken damage, that is to bad, but at least we know the Event cb system is working fine now - Report from the DamageListener");
+        }
+
+        void OnTileAttack(TileAttackEvent tileAttack)
+        {
+            Debug.Log("I hear " + tileAttack.ActorGO.name + " has taken damage, that is to bad, but at least we know the Event cb system is working fine now - Report from the DamageListener");
         }
     }
 }

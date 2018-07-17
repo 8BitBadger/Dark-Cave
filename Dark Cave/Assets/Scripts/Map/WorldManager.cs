@@ -101,6 +101,8 @@ namespace MapSystem
                     //Set the tile leayer to the obstacle layer to work with the FOW
                     tile_go.layer = 8;
 
+                    tile_go.AddComponent<EventCbSystem.TileLogic>();
+
                     tile_data.RegisterTileTypeChangedCallback(OnTileTypeChanged);
                 }
 
