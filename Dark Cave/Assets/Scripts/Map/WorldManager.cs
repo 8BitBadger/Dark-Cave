@@ -15,7 +15,7 @@ namespace MapSystem
         public MapManager map;
 
         //The object to store the tiles for the map int
-        GameObject mapTiles;
+        //GameObject mapTiles;
 
         //The width and height of the map capped to ranges
         [Range(50, 350)]
@@ -64,9 +64,11 @@ namespace MapSystem
             //Instantiate our dictionary that track the link between the tile an=d it's game object
             tileGameObjectMap = new Dictionary<Tile, GameObject>();
 
-            mapTiles = new GameObject();
+            GameObject mapTiles = new GameObject();
 
             mapTiles = Instantiate(gameObject);
+
+            mapTiles.name = "Map";
 
             //Create a game object for each of our tile so they can show visualy.
             for (int x = 0; x < width; x++)

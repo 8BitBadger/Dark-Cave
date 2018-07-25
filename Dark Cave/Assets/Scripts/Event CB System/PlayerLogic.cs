@@ -41,7 +41,7 @@ namespace EventCbSystem
         {
             PlayerDamageEvent playerDamageEventInfo = new PlayerDamageEvent();
             playerDamageEventInfo.Description = "Actorr] " + gameObject.name + " has taken damage.";
-            playerDamageEventInfo.ActorGO = gameObject;
+            playerDamageEventInfo.player_go = gameObject;
             playerDamageEventInfo.FireEvent();
         }
 
@@ -49,7 +49,7 @@ namespace EventCbSystem
         {
             PlayerDeathEvent playerDeathEventInfo = new PlayerDeathEvent();
             playerDeathEventInfo.Description = "Actor "+ gameObject.name +" has died.";
-            playerDeathEventInfo.ActorGO = gameObject;
+            playerDeathEventInfo.player_go = gameObject;
             playerDeathEventInfo.FireEvent();
 
             Destroy(gameObject);
@@ -58,7 +58,7 @@ namespace EventCbSystem
         {
             PlayerAttackEvent playerAttackEventiInfo = new PlayerAttackEvent();
             playerAttackEventiInfo.Description = "Unit " + gameObject.name + " has just attacked";
-            playerAttackEventiInfo.ActorGO = gameObject;
+            playerAttackEventiInfo.player_go = gameObject;
             playerAttackEventiInfo.FireEvent();
         }
 
@@ -66,7 +66,7 @@ namespace EventCbSystem
         {
             PlayerHitEvent playerHitEventInfo = new PlayerHitEvent();
             playerHitEventInfo.Description = "Actor " + gameObject.name + " has hit something";
-            playerHitEventInfo.ActorGO = gameObject;
+            playerHitEventInfo.player_go = gameObject;
             playerHitEventInfo.FireEvent();
         }
     }

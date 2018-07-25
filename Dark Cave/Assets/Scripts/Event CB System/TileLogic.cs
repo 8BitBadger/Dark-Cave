@@ -18,19 +18,19 @@ namespace EventCbSystem
         {
           
         }
-        
-        void HealTile(MapSystem.Tile _tile)
+
+        void Heal(MapSystem.Tile _tile)
         {
             
         }
 
-        void DamageTile(MapSystem.Tile _tile)
+        void TakeDamage(MapSystem.Tile _tile)
         {
             TileDamageEvent tileDamageEventInfo = new TileDamageEvent();
 
 
             tileDamageEventInfo.Description = "Actorr] " + gameObject.name + " has taken damage.";
-            tileDamageEventInfo.ActorGO = gameObject;
+            tileDamageEventInfo.tile_go = gameObject;
             tileDamageEventInfo.FireEvent();
         }
 
@@ -38,7 +38,7 @@ namespace EventCbSystem
         {
             TileDeathEvent tileDeathEventInfo = new TileDeathEvent();
             tileDeathEventInfo.Description = "Actor "+ gameObject.name +" has died.";
-            tileDeathEventInfo.ActorGO = gameObject;
+            tileDeathEventInfo.tile_go = gameObject;
             tileDeathEventInfo.FireEvent();
 
             Destroy(gameObject);
@@ -47,7 +47,7 @@ namespace EventCbSystem
         {
             TileAttackEvent tileAttackEventiInfo = new TileAttackEvent();
             tileAttackEventiInfo.Description = "Unit " + gameObject.name + " has just attacked";
-            tileAttackEventiInfo.ActorGO = gameObject;
+            tileAttackEventiInfo.tile_go = gameObject;
             tileAttackEventiInfo.FireEvent();
         }
 
@@ -55,7 +55,7 @@ namespace EventCbSystem
         {
             TileHitEvent tileHitEventInfo = new TileHitEvent();
             tileHitEventInfo.Description = "Actor " + gameObject.name + " has hit something";
-            tileHitEventInfo.ActorGO = gameObject;
+            tileHitEventInfo.tile_go = gameObject;
             tileHitEventInfo.FireEvent();
         }
     }

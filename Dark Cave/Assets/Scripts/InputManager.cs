@@ -9,8 +9,6 @@ public class InputManager : MonoBehaviour
     public ActorStats playerStats;
 
     private EventCbSystem.PlayerLogic playerLogic;
-    private EventCbSystem.EnemyLogic enemyLogic;
-    private EventCbSystem.TileLogic tileLogic;
 
     //The world coordinates of the mouse in the last frame
     Vector3 lastFramePosition;
@@ -62,7 +60,7 @@ public class InputManager : MonoBehaviour
                     {
                         if (hit[i].collider.tag == "Enemy")
                         {
-                            hit[i].collider.GetComponent<AiLogic.StateController>().TakeDamage(playerLogic.CalculateDamage());
+                            hit[i].collider.GetComponent<EventCbSystem.EnemyLogic>().TakeDamage(playerLogic.CalculateDamage());
                         }
                     }
                 }

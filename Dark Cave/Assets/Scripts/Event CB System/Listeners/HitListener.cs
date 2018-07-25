@@ -29,17 +29,17 @@ namespace EventCbSystem
 
         void OnPlayerHit(PlayerHitEvent playerHit)
         {
-            Debug.Log("I hear " + playerHit.ActorGO.name + " has taken damage, that is to bad, but at least we know the Event cb system is working fine now - Report from the HitListener");
+            Debug.Log("I hear " + playerHit.player_go.name + " has taken damage, that is to bad, but at least we know the Event cb system is working fine now - Report from the HitListener");
         }
 
         void OnEnemyHit(EnemyHitEvent enemyHit)
         {
-            Debug.Log("I hear " + enemyHit.ActorGO.name + " has taken damage, that is to bad, but at least we know the Event cb system is working fine now - Report from the HitListener");
+            Debug.Log("I hear " + enemyHit.enemy_go.name + " has taken damage, that is to bad, but at least we know the Event cb system is working fine now - Report from the HitListener");
         }
 
         void OnTileHit(TileHitEvent tileHit)
         {
-            Debug.Log("I hear " + tileHit.ActorGO.name + " has taken damage, that is to bad, but at least we know the Event cb system is working fine now - Report from the HitListener");
+            Debug.Log("I hear " + tileHit.tile_go.name + " has taken damage, that is to bad, but at least we know the Event cb system is working fine now - Report from the HitListener");
         }
     }
 }

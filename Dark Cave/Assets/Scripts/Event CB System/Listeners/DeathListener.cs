@@ -31,21 +31,19 @@ namespace EventCbSystem
 
         void OnPlayerDeath(PlayerDeathEvent playerDeath)
         {
-            Debug.Log("I hear " + playerDeath.ActorGO.name + " has taken damage, that is to bad, but at least we know the Event cb system is working fine now - Report from the DamageListener");
+            //Debug.Log("I hear " + playerDeath.player_go.name + " has died - Report from the DeathListener");
         }
 
         void OnEnemyDeath(EnemyDeathEvent enemyDeath)
         {
-            if (enemyDeath.ActorGO.tag == "Enemy")
-            {
-                Instantiate(CrystalToSpawn, enemyDeath.ActorGO.transform);
-            }
-            Debug.Log("I hear " + enemyDeath.ActorGO.name + " has taken damage, that is to bad, but at least we know the Event cb system is working fine now - Report from the DamageListener");
+            Instantiate(CrystalToSpawn, enemyDeath.enemy_go.transform);
+            Debug.Log("enemyDeath.enemy_go.transform -> " + enemyDeath.enemy_go.transform.position);
+            //Debug.Log("I hear " + enemyDeath.enemy_go.name + " has died - Report from the DeathListener");
         }
 
         void OnTileDeath(TileDeathEvent tileDeath)
         {
-            Debug.Log("I hear " + tileDeath.ActorGO.name + " has taken damage, that is to bad, but at least we know the Event cb system is working fine now - Report from the DamageListener");
+            //Debug.Log("I hear " + tileDeath.tile_go.name + " has died - Report from the DeathListener");
         }
     }
 }

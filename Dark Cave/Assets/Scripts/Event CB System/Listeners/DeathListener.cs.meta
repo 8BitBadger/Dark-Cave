@@ -3,7 +3,9 @@ guid: 28e6a98a350493f41a2009e22c8a57b1
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - CrystalToSpawn: {fileID: 1137105239376170, guid: 14e818a549e8b084786874d009504202,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

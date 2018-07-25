@@ -29,17 +29,17 @@ public class AttackListener : MonoBehaviour
 
         void OnPlayerAttack(PlayerAttackEvent playerAttack)
         {
-            Debug.Log("I hear " + playerAttack.ActorGO.name + " has taken damage, that is to bad, but at least we know the Event cb system is working fine now - Report from the DamageListener");
+            Debug.Log("I hear " + playerAttack.player_go.name + " has taken damage, that is to bad, but at least we know the Event cb system is working fine now - Report from the DamageListener");
         }
 
         void OnEnemyAttack(EnemyAttackEvent enemyAttack)
         {
-            Debug.Log("I hear " + enemyAttack.ActorGO.name + " has taken damage, that is to bad, but at least we know the Event cb system is working fine now - Report from the DamageListener");
+            Debug.Log("I hear " + enemyAttack.enemy_go.name + " has taken damage, that is to bad, but at least we know the Event cb system is working fine now - Report from the DamageListener");
         }
 
         void OnTileAttack(TileAttackEvent tileAttack)
         {
-            Debug.Log("I hear " + tileAttack.ActorGO.name + " has taken damage, that is to bad, but at least we know the Event cb system is working fine now - Report from the DamageListener");
+            Debug.Log("I hear " + tileAttack.tile_go.name + " has taken damage, that is to bad, but at least we know the Event cb system is working fine now - Report from the DamageListener");
         }
     }
 }

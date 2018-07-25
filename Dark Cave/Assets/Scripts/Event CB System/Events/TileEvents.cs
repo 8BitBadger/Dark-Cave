@@ -12,7 +12,7 @@ namespace EventCbSystem
 
     public class TileDeathEvent : Event<TileDeathEvent>
     {
-        public GameObject ActorGO;
+        public GameObject tile_go;
         /*
 
         Info about cause of death, our killer, etc...
@@ -24,7 +24,7 @@ namespace EventCbSystem
 
     public class TileDamageEvent : Event<TileDamageEvent>
     {
-        public GameObject ActorGO;
+        public GameObject tile_go;
 
         /*
 
@@ -37,7 +37,7 @@ namespace EventCbSystem
 
     public class TileAttackEvent : Event<TileAttackEvent>
     {
-        public GameObject ActorGO;
+        public GameObject tile_go;
 
         /*
 
@@ -50,7 +50,7 @@ namespace EventCbSystem
 
     public class TileHitEvent : Event<TileHitEvent>
     {
-        public GameObject ActorGO;
+        public GameObject tile_go;
         /*
 
         Info about cause of death, our killer, etc...

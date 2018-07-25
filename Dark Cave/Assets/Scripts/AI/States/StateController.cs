@@ -67,6 +67,11 @@ namespace AiLogic
             currentState.UpdateState(this);
         }
 
+        public int CalculateDamage()
+        {
+            return (((stats.strength + stats.strengthModifier) / 5));
+        }
+
         public void TransitionToState(State nextState)
         {
             if (nextState != remainState)
@@ -91,22 +96,6 @@ namespace AiLogic
         {
             stats.speed = _speed;
             speed = (float)(stats.speed + (3 + (stats.agility / 5)) * Time.deltaTime);
-        }
-
-        public void TakeDamage(int damage)
-        {
-            //Do take damage animation
-            stats.health -= damage;
-
-            if (stats.health <= 0)
-            {
-                Die();
-            }
-        }
-
-        public int CalculateDamage()
-        {
-            return (((stats.strength + stats.strengthModifier) / 5));
         }
 
         void Die()

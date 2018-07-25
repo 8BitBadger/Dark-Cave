@@ -12,7 +12,7 @@ namespace EventCbSystem
 
     public class EnemyDeathEvent : Event<EnemyDeathEvent>
     {
-        public GameObject ActorGO;
+        public GameObject enemy_go;
         /*
 
         Info about cause of death, our killer, etc...
@@ -24,7 +24,7 @@ namespace EventCbSystem
 
     public class EnemyDamageEvent : Event<EnemyDamageEvent>
     {
-        public GameObject ActorGO;
+        public GameObject enemy_go;
 
         /*
 
@@ -37,7 +37,7 @@ namespace EventCbSystem
 
     public class EnemyAttackEvent : Event<EnemyAttackEvent>
     {
-        public GameObject ActorGO;
+        public GameObject enemy_go;
 
         /*
 
@@ -50,7 +50,7 @@ namespace EventCbSystem
 
     public class EnemyHitEvent : Event<EnemyHitEvent>
     {
-        public GameObject ActorGO;
+        public GameObject enemy_go;
         /*
 
         Info about cause of death, our killer, etc...
