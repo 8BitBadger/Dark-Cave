@@ -36,9 +36,8 @@ namespace EventCbSystem
 
         void OnEnemyDeath(EnemyDeathEvent enemyDeath)
         {
-            Instantiate(CrystalToSpawn, enemyDeath.enemy_go.transform);
-            Debug.Log("enemyDeath.enemy_go.transform -> " + enemyDeath.enemy_go.transform.position);
-            //Debug.Log("I hear " + enemyDeath.enemy_go.name + " has died - Report from the DeathListener");
+            //When the enemy dies a new crystal is spawned
+            Instantiate(CrystalToSpawn, enemyDeath.enemy_go.transform.position, Quaternion.identity);
         }
 
         void OnTileDeath(TileDeathEvent tileDeath)

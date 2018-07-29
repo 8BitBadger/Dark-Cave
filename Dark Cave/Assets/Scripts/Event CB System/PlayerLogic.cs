@@ -7,7 +7,7 @@ namespace EventCbSystem
     public class PlayerLogic : MonoBehaviour
     {
 
-        public ActorStats stats;
+        public UnitStats stats;
 
         // Use this for initialization
         void Start()

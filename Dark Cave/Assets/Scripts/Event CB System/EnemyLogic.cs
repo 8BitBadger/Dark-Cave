@@ -7,7 +7,7 @@ namespace EventCbSystem
     public class EnemyLogic : MonoBehaviour
     {
 
-        ActorStats stats;
+        UnitStats stats;
 
         // Use this for initialization
         void Start()

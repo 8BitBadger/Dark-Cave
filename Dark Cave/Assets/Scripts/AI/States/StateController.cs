@@ -12,8 +12,8 @@ namespace AiLogic
         //we can only use the scriptable objecgt here to share health becuase we are not haring of the same enemy types
         //so we wont have for example two barberians at the same time.
 
-        public ActorStats statsToAdd;
-        [HideInInspector] public ActorStats stats;
+        public UnitStats statsToAdd;
+        [HideInInspector] public UnitStats stats;
 
         //The target to chase
         [HideInInspector] public Transform chaseTarget;
