@@ -85,11 +85,9 @@ public class InputManager : MonoBehaviour
 
     Vector3 GetMousePosForTile()
     {
-        Vector3 mousePos = new Vector3(Mathf.RoundToInt(Camera.main.ScreenToWorldPoint(Input.mousePosition).x),
+        return new Vector3(Mathf.RoundToInt(Camera.main.ScreenToWorldPoint(Input.mousePosition).x),
                                        Mathf.RoundToInt(Camera.main.ScreenToWorldPoint(Input.mousePosition).y),
                                        Camera.main.ScreenToWorldPoint(Input.mousePosition).z);
-
-        return mousePos;
     }
 
     public void SetMode_BreakGround()
